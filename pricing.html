@@ -68,11 +68,11 @@
   position: fixed;
   bottom: 30px;
   right: 0px;
-  background: linear-gradient(135deg, #8b0000, #550000);
-  padding: 25px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  /* background: linear-gradient(135deg, #8b0000, #550000); */
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   /* border-radius: 20px; */
-  width: 350px;
+  width: 340px;
   height: 100vh; /* Full height */
   max-height: 100vh;
   overflow-y: scroll;
@@ -80,7 +80,7 @@
   transition: transform 0.5s ease, opacity 0.5s ease-in-out;
   animation: fadeIn 0.6s ease-out;
   scrollbar-width: thin;
-  scrollbar-color: #c71585 #3a1c1c;
+  scrollbar-color: #8e44ad #2c3e50;
   scroll-behavior: smooth;
 }
 
@@ -94,7 +94,7 @@
 
 /* Cart Header */
 .cart .cart-header {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   color: #fff;
   margin-bottom: 15px;
@@ -103,7 +103,7 @@
   text-align: center;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1.2px;
-  background: linear-gradient(45deg, #c71585, #a52a2a);
+  background: linear-gradient(45deg, #8e44ad, #2c3e50); /* Darker, richer gradient */
   padding: 20px;
   border-radius: 18px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -131,7 +131,8 @@
   margin-bottom: 15px;
   font-size: 16px;
   color: #dcdcdc;
-  background-color: #333;
+  background: url('https://www.transparenttextures.com/patterns/black-tie.png'), linear-gradient(135deg, #3a3a3a, #222);
+
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -203,7 +204,7 @@
 
 /* Checkout Button */
 .cart .checkout-btn {
-  background: linear-gradient(45deg, #3e8e41, #2c6e30);
+  background: linear-gradient(45deg, #333, #555);
   color: white;
   padding: 20px;
   border: none;
@@ -270,20 +271,14 @@
 }
 
 .cart::-webkit-scrollbar-thumb {
-  background: #c71585;
+  background-color: #8e44ad; /* Purple thumb */
   border-radius: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.cart::-webkit-scrollbar-thumb:hover {
-  background-color: #8b0000;
 }
 
 .cart::-webkit-scrollbar-track {
-  background: #3a1c1c;
+  background-color: #2c3e50; /* Blue-gray track */
   border-radius: 10px;
 }
-
 /* Add Animation for Smooth Appearance */
 /* @keyframes fadeIn {
   from {
