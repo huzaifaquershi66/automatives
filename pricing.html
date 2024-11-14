@@ -422,148 +422,149 @@
     </div>
   </footer>
 
-  <script src="./assets/js/script.js">
-    document.addEventListener('DOMContentLoaded', function() {
-      const chooseButtons = document.querySelectorAll('.choose-package');
-      const cart = document.getElementById('cart');
-      const cartItems = document.getElementById('cart-items');
-      const subtotalDisplay = document.getElementById('subtotal');
-      const closeCartButton = document.getElementById('close-cart');
-      
-      const packageImages = {
-        'Silver Package': 'https://venusinterior.in/wp-content/uploads/2024/08/Silver-Package-Graphics-Design.png.webp',
-        'Gold Package': 'https://risetogreaterheights.com/wp-content/uploads/2021/02/D810D946-2B9D-4A5A-B31E-E5A39353ACCC.png',
-        'Platinum Package': 'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=328,h=320,fit=crop/Y4LJeEQpgLu7EjkM/image_prev_ui-48-AVLb2EDgnNhNJ5j3.png'
-      };
-    
-      let cartTotal = 0;
-
-
-    
-      const isCartVisible = JSON.parse(localStorage.getItem('cartVisible')) || false;
-      if (isCartVisible) {
-        cart.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      } else {
-        cart.classList.remove('show');
-        document.body.style.overflow = ''; // Reset body overflow
-
-       
-      }
-    
-      chooseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const selectedPackage = button.dataset.package;
-          const packageDetails = selectedPackage.split(' - ');
-          const packageName = packageDetails[0];
-          const packagePrice = parseFloat(packageDetails[1]);
-    
-          if (isNaN(packagePrice)) {
-            console.error('Invalid price value');
-            return;
-          }
-    
-          let cartData = JSON.parse(localStorage.getItem('cart')) || [];
-          const existingItem = cartData.find(item => item.packageName === packageName);
-    
-          if (existingItem) {
-            existingItem.quantity += 1;
-            existingItem.totalPrice = (existingItem.quantity * packagePrice).toFixed(2);
-          } else {
-            cartData.push({
-              packageName: packageName,
-              packagePrice: packagePrice.toFixed(2),
-              quantity: 1,
-              totalPrice: packagePrice.toFixed(2),
-            });
-          }
-    
-          localStorage.setItem('cart', JSON.stringify(cartData));
-          updateCartDisplay(cartData);
-          updateSubtotal(cartData);
-        });
-      });
-    
-      function updateCartDisplay(cartData) {
-        cartItems.innerHTML = '';
-    
-        cartData.forEach(item => {
-          const cartItem = document.createElement('div');
-          cartItem.classList.add('cart-item');
-          cartItem.innerHTML = `
-            <img src="${packageImages[item.packageName]}" alt="${item.packageName} Image">
-            <div class="item-info">
-              <span class="item-name">${item.packageName}</span>
-              <span class="item-price">${item.totalPrice}</span>
-              <span class="item-quantity">x${item.quantity}</span>
-              <span class="remove-item" data-package="${item.packageName}">
-                <i class="fas fa-trash-alt"></i>
-              </span>
-            </div>
-          `;
-          cartItems.appendChild(cartItem);
-        });
+  <script >
   
-        // Attach event listener to each remove item button
-        const removeButtons = document.querySelectorAll('.remove-item');
-        removeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const packageName = this.getAttribute('data-package');
-            removeItem(packageName);
-          });
+document.addEventListener('DOMContentLoaded', function() {
+  const chooseButtons = document.querySelectorAll('.choose-package');
+  const cart = document.getElementById('cart');
+  const cartItems = document.getElementById('cart-items');
+  const subtotalDisplay = document.getElementById('subtotal');
+  const closeCartButton = document.getElementById('close-cart');
+  
+  const packageImages = {
+    'Silver Package': 'https://venusinterior.in/wp-content/uploads/2024/08/Silver-Package-Graphics-Design.png.webp',
+    'Gold Package': 'https://risetogreaterheights.com/wp-content/uploads/2021/02/D810D946-2B9D-4A5A-B31E-E5A39353ACCC.png',
+    'Platinum Package': 'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=328,h=320,fit=crop/Y4LJeEQpgLu7EjkM/image_prev_ui-48-AVLb2EDgnNhNJ5j3.png'
+  };
+
+  let cartTotal = 0;
+
+
+
+  const isCartVisible = JSON.parse(localStorage.getItem('cartVisible')) || false;
+  if (isCartVisible) {
+    cart.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  } else {
+    cart.classList.remove('show');
+    document.body.style.overflow = ''; // Reset body overflow
+
+   
+  }
+
+  chooseButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedPackage = button.dataset.package;
+      const packageDetails = selectedPackage.split(' - ');
+      const packageName = packageDetails[0];
+      const packagePrice = parseFloat(packageDetails[1]);
+
+      if (isNaN(packagePrice)) {
+        console.error('Invalid price value');
+        return;
+      }
+
+      let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingItem = cartData.find(item => item.packageName === packageName);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+        existingItem.totalPrice = (existingItem.quantity * packagePrice).toFixed(2);
+      } else {
+        cartData.push({
+          packageName: packageName,
+          packagePrice: packagePrice.toFixed(2),
+          quantity: 1,
+          totalPrice: packagePrice.toFixed(2),
         });
-    
-        if (cartData.length > 0) {
-          cart.classList.add('show');
-        } else {
-          cart.classList.remove('show');
-        }
       }
-    
-      function updateSubtotal(cartData) {
-        cartTotal = cartData.reduce((total, item) => total + parseFloat(item.totalPrice), 0);
-    
-        if (subtotalDisplay) {
-          subtotalDisplay.textContent = cartTotal.toFixed(2);
-        } else {
-          console.error('Subtotal display element not found');
-        }
-      }
-    
-      const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-      updateCartDisplay(storedCart);
-      updateSubtotal(storedCart);
-    
-      closeCartButton.addEventListener('click', function() {
-        cart.classList.remove('hide');
-        cart.classList.remove('show');
-        localStorage.setItem('cartVisible', JSON.stringify(false));
-      });
-    
-      function openCart() {
-        cart.classList.add('show');
-        localStorage.setItem('cartVisible', JSON.stringify(true));
-      }
-    
-      if (isCartVisible) {
-        openCart();
-      }
-    
-      function removeItem(packageName) {
-        let cartData = JSON.parse(localStorage.getItem('cart')) || [];
-        cartData = cartData.filter(item => item.packageName !== packageName);
-        localStorage.setItem('cart', JSON.stringify(cartData));
-        updateCartDisplay(cartData);
-        updateSubtotal(cartData);
-      }
+
+      localStorage.setItem('cart', JSON.stringify(cartData));
+      updateCartDisplay(cartData);
+      updateSubtotal(cartData);
     });
-    const cart = document.querySelector('.cart');
+  });
+
+  function updateCartDisplay(cartData) {
+    cartItems.innerHTML = '';
+
+    cartData.forEach(item => {
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <img src="${packageImages[item.packageName]}" alt="${item.packageName} Image">
+        <div class="item-info">
+          <span class="item-name">${item.packageName}</span>
+          <span class="item-price">${item.totalPrice}</span>
+          <span class="item-quantity">x${item.quantity}</span>
+          <span class="remove-item" data-package="${item.packageName}">
+            <i class="fas fa-trash-alt"></i>
+          </span>
+        </div>
+      `;
+      cartItems.appendChild(cartItem);
+    });
+
+    // Attach event listener to each remove item button
+    const removeButtons = document.querySelectorAll('.remove-item');
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const packageName = this.getAttribute('data-package');
+        removeItem(packageName);
+      });
+    });
+
+    if (cartData.length > 0) {
+      cart.classList.add('show');
+    } else {
+      cart.classList.remove('show');
+    }
+  }
+
+  function updateSubtotal(cartData) {
+    cartTotal = cartData.reduce((total, item) => total + parseFloat(item.totalPrice), 0);
+
+    if (subtotalDisplay) {
+      subtotalDisplay.textContent = cartTotal.toFixed(2);
+    } else {
+      console.error('Subtotal display element not found');
+    }
+  }
+
+  const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+  updateCartDisplay(storedCart);
+  updateSubtotal(storedCart);
+
+  closeCartButton.addEventListener('click', function() {
+    cart.classList.remove('hide');
+    cart.classList.remove('show');
+    localStorage.setItem('cartVisible', JSON.stringify(false));
+  });
+
+  function openCart() {
+    cart.classList.add('show');
+    localStorage.setItem('cartVisible', JSON.stringify(true));
+  }
+
+  if (isCartVisible) {
+    openCart();
+  }
+
+  function removeItem(packageName) {
+    let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+    cartData = cartData.filter(item => item.packageName !== packageName);
+    localStorage.setItem('cart', JSON.stringify(cartData));
+    updateCartDisplay(cartData);
+    updateSubtotal(cartData);
+  }
+});
+const cart = document.querySelector('.cart');
 const closeCartButton = document.querySelector('.close-cart');
 
 // Function to close the cart
 function closeCart() {
-  cart.classList.remove('show'); // Removes the 'show' class to hide the cart
-  localStorage.setItem('cartState', 'closed'); // Save cart state to localStorage
+cart.classList.remove('show'); // Removes the 'show' class to hide the cart
+localStorage.setItem('cartState', 'closed'); // Save cart state to localStorage
 }
 
 // Attach event listener to close button
@@ -571,12 +572,12 @@ closeCartButton.addEventListener('click', closeCart);
 
 // Check cart state on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const cartState = localStorage.getItem('cartState');
-  if (cartState === 'open') {
-    cart.classList.add('show'); // Show cart if it was open before refresh
-  } else {
-    cart.classList.remove('show'); // Hide cart if it was closed before refresh
-  }
+const cartState = localStorage.getItem('cartState');
+if (cartState === 'open') {
+cart.classList.add('show'); // Show cart if it was open before refresh
+} else {
+cart.classList.remove('show'); // Hide cart if it was closed before refresh
+}
 });
 // Get elements for toggle
 // Get the toggle button and the navigation list
@@ -589,6 +590,19 @@ document.addEventListener('DOMContentLoaded', () => {
 //   navbarList.classList.toggle('active');
 // });
 
+const navbar = document.querySelector("[data-navbar]");
+const navToggler = document.querySelector("[data-nav-toggler]");
+
+navToggler.addEventListener("click", function () {
+  navbar.classList.toggle("active");
+  this.classList.toggle("active");
+});
+
+$(document).ready(function(){
+  $('.jojo').slick({
+    setting: setting-value
+  });
+});
   </script>
   
   
