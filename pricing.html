@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -14,27 +14,288 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Mulish&display=swap" rel="stylesheet">
-  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="preload" as="image" href="./assets/images/hero-banner.png">
   <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
   <style>
     /* Heart icon styling */
-  /* Heart icon styling */
-.heart-icon {
-  position: absolute;
-  top: 10px;  /* Adjust this value to place the icon higher or lower */
-  right: 10px;  /* Adjust this value to position it horizontally */
-  font-size: 24px;
-  color: #ff4081;
-  transition: transform 0.3s ease, color 0.3s ease;
+    .heart-icon {
+      position: absolute;
+      top: 10px;  
+      right: 10px;  
+      font-size: 24px;
+      color: #ff4081;
+      transition: transform 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .heart-icon:hover {
+      transform: scale(1.2);
+      color: #e91e63;
+    }
+
+    /* Cart Styling */
+    /* Cart Container */
+/* Main Cart */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide-out to right animation */
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Main Cart */
+.cart {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 0px;
+  background: linear-gradient(135deg, #8b0000, #550000);
+  padding: 25px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  /* border-radius: 20px; */
+  width: 350px;
+  height: 100vh; /* Full height */
+  max-height: 100vh;
+  overflow-y: scroll;
+  z-index: 1000;
+  transition: transform 0.5s ease, opacity 0.5s ease-in-out;
+  animation: fadeIn 0.6s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: #c71585 #3a1c1c;
+  scroll-behavior: smooth;
+}
+
+/* Show Cart when Active */
+.cart.show {
+  display: block;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+
+
+/* Cart Header */
+.cart .cart-header {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #f2f2f2;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1.2px;
+  background: linear-gradient(45deg, #c71585, #a52a2a);
+  padding: 20px;
+  border-radius: 18px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  animation: headerPop 0.8s ease-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Cart Header Animation */
+@keyframes headerPop {
+  0% {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Cart Item */
+.cart .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #dcdcdc;
+  background-color: #333;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #555;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.heart-icon:hover {
-  transform: scale(1.2);
-  color: #e91e63;
+/* Hover Effect for Cart Item */
+.cart .cart-item:hover {
+  transform: scale(1.03);
+  background-color: #444;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
+
+/* Cart Item Image */
+.cart .cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 15px;
+  border: 2px solid #444;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cart .cart-item img:hover {
+  transform: scale(1.1);
+  border-color: #c71585;
+}
+
+/* Cart Item Info */
+.cart .cart-item .item-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.cart .cart-item .item-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ddd;
+  margin-bottom: 8px;
+}
+
+.cart .cart-item .item-price {
+  font-size: 18px;
+  color: #bbb;
+  font-weight: 600;
+}
+.cart.hide {
+  animation: slideOutRight 1s ease-out forwards;
+}
+/* Remove Item Button */
+.cart .remove-item {
+  color: #e91e63;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.cart .remove-item:hover {
+  color: #c2185b;
+  transform: scale(1.1);
+}
+
+/* Checkout Button */
+.cart .checkout-btn {
+  background: linear-gradient(45deg, #3e8e41, #2c6e30);
+  color: white;
+  padding: 20px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+.cart .checkout-btn:hover {
+  background: linear-gradient(45deg, #2c6e30, #3e8e41);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Empty Cart Message */
+.cart .empty-cart {
+  font-size: 16px;
+  color: #ff6347;
+  text-align: center;
+  margin-top: 25px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Close Icon in Cart Header */
+.cart .close-cart {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff;
+
+  /* animation: slideOutRight 0.5s ease-out forwards; */
+
+
+}
+
+.cart .close-cart:hover {
+  color: #e91e63;
+  transform: scale(1.1);
+}
+
+/* Subtotal Container */
+.cart .cart-subtotal {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Custom Scrollbar Styling */
+.cart::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cart::-webkit-scrollbar-thumb {
+  background: #c71585;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cart::-webkit-scrollbar-thumb:hover {
+  background-color: #8b0000;
+}
+
+.cart::-webkit-scrollbar-track {
+  background: #3a1c1c;
+  border-radius: 10px;
+}
+
+/* Add Animation for Smooth Appearance */
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
 
   </style>
 </head>
@@ -46,7 +307,7 @@
       <a href="#" class="logo">
         <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="128" height="63" alt="autofix home">
       </a>
-
+  
       <nav class="navbar" data-navbar>
         <ul class="navbar-list">
           <li><a href="index.html" class="navbar-link">Home</a></li>
@@ -55,12 +316,7 @@
           <li><a href="contact.html" class="navbar-link">Contact</a></li>
         </ul>
       </nav>
-
-      <a href="#" class="btn btn-primary">
-        <span class="span">Get a Quote</span>
   
-      </a>
-
       <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
         <span class="nav-toggle-icon icon-1"></span>
         <span class="nav-toggle-icon icon-2"></span>
@@ -68,73 +324,62 @@
       </button>
     </div>
   </header>
+  
+  
 
   <main>
     <article>
-
       <section class="hero has-bg-image" aria-label="home" style="background-image: url('./assets/images/hero-bg.jpg')">
         <div class="contact-wrap">
           <h1 class="hope">Our Pricing Packages</h1>
-          <div class="pricing-packages">
-            
-            <!-- Silver Package -->
+          <div class="pricing-packages" >
+            <!-- Package 1 -->
             <div class="pricing-box">
               <img src="https://venusinterior.in/wp-content/uploads/2024/08/Silver-Package-Graphics-Design.png.webp" alt="Silver Package">
               <h3>Silver Package</h3>
               <p>Basic maintenance and repair services.</p>
               <div class="price">$50</div>
-              <a href="https://www.paypal.me/AdilSiddiqui2109" target="_blank">
-              <button>Choose Silver</button>
-              </a>
-              <div class="cart-icon">
-                <i class="fa fa-shopping-cart"></i>
-              </div>
-              <div class="heart-icon">
-                <i class="fa fa-heart"></i>
-              </div>
-            </div>
+              <button class="choose-package" data-package="Silver Package - 50.00">Silver Package</button>            </div>
 
-            <!-- Gold Package -->
+            <!-- Package 2 -->
             <div class="pricing-box">
               <img src="https://risetogreaterheights.com/wp-content/uploads/2021/02/D810D946-2B9D-4A5A-B31E-E5A39353ACCC.png" alt="Gold Package">
               <h3>Gold Package</h3>
               <p>Comprehensive maintenance and repair.</p>
               <div class="price">$100</div>
-              <a href="https://www.paypal.me/AdilSiddiqui2109" target="_blank">
-              <button>Choose Gold</button>
-</a>
-
-              <div class="cart-icon">
-                <i class="fa fa-shopping-cart"></i>
-              </div>
-              <div class="heart-icon">
-                <i class="fa fa-heart"></i>
-              </div>
+              <button class="choose-package" data-package="Gold Package - 100.00">Gold Package</button>
             </div>
 
-            <!-- Platinum Package -->
+            <!-- Package 3 -->
             <div class="pricing-box">
               <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=328,h=320,fit=crop/Y4LJeEQpgLu7EjkM/image_prev_ui-48-AVLb2EDgnNhNJ5j3.png" alt="Platinum Package">
               <h3>Platinum Package</h3>
               <p>Premium services with additional benefits.</p>
               <div class="price">$150</div>
-              <a href="https://www.paypal.me/AdilSiddiqui2109" target="_blank">
-              <button>Choose Platinum</button>
-              </a>
-              <div class="cart-icon">
-                <i class="fa fa-shopping-cart"></i>
-              </div>
-              <div class="heart-icon">
-                <i class="fa fa-heart"></i>
-              </div>
+              <button class="choose-package" data-package="Platinum Package - 150.00">Platinum Package</button>
             </div>
-
           </div>
         </div>
       </section>
-
     </article>
   </main>
+
+  <div class="cart" id="cart">
+    <div class="cart-header">
+      Shopping Cart
+      <span class="close-cart" onclick="closeCart()">×</span> <!-- Close Icon -->
+    </div>
+    <div id="cart-items">
+      <!-- Cart items will be inserted here dynamically -->
+    </div>
+    <div class="cart-subtotal">
+      <span>Total: </span><span id="subtotal">0.00</span> <!-- Subtotal display -->
+    </div>
+ <!-- Checkout Button -->
+<button class="checkout-btn" onclick="window.location.href='payment.html'">Proceed to Checkout</button>
+
+  </div>
+  
 
   <footer class="footer">
     <div class="footer-top section">
@@ -159,18 +404,183 @@
           <li><p class="h3">Contact Info</p></li>
           <li><a href="tel:+01234567890" class="footer-link"><span class="material-symbols-rounded">call</span><span class="span">+01 2 3456 7890</span></a></li>
           <li><a href="mailto:info@autofix.com" class="footer-link"><span class="material-symbols-rounded">mail</span><span class="span">info@autofix.com</span></a></li>
-          <li><address class="footer-link address"><span class="material-symbols-rounded">location_on</span><span class="span">21 King Street Melbourne, 3000, Australia</span></address></li>
+          <li><address class="footer-link"><span class="material-symbols-rounded">location_on</span><span class="span">1234 Autofix St, City, Country</span></address></li>
         </ul>
-
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p class="copyright">Copyright 2024, Autofix All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="./assets/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const chooseButtons = document.querySelectorAll('.choose-package');
+      const cart = document.getElementById('cart');
+      const cartItems = document.getElementById('cart-items');
+      const subtotalDisplay = document.getElementById('subtotal');
+      const closeCartButton = document.getElementById('close-cart');
+      
+      const packageImages = {
+        'Silver Package': 'https://venusinterior.in/wp-content/uploads/2024/08/Silver-Package-Graphics-Design.png.webp',
+        'Gold Package': 'https://risetogreaterheights.com/wp-content/uploads/2021/02/D810D946-2B9D-4A5A-B31E-E5A39353ACCC.png',
+        'Platinum Package': 'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=328,h=320,fit=crop/Y4LJeEQpgLu7EjkM/image_prev_ui-48-AVLb2EDgnNhNJ5j3.png'
+      };
+    
+      let cartTotal = 0;
+
+
+    
+      const isCartVisible = JSON.parse(localStorage.getItem('cartVisible')) || false;
+      if (isCartVisible) {
+        cart.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      } else {
+        cart.classList.remove('show');
+        document.body.style.overflow = ''; // Reset body overflow
+
+       
+      }
+    
+      chooseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const selectedPackage = button.dataset.package;
+          const packageDetails = selectedPackage.split(' - ');
+          const packageName = packageDetails[0];
+          const packagePrice = parseFloat(packageDetails[1]);
+    
+          if (isNaN(packagePrice)) {
+            console.error('Invalid price value');
+            return;
+          }
+    
+          let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+          const existingItem = cartData.find(item => item.packageName === packageName);
+    
+          if (existingItem) {
+            existingItem.quantity += 1;
+            existingItem.totalPrice = (existingItem.quantity * packagePrice).toFixed(2);
+          } else {
+            cartData.push({
+              packageName: packageName,
+              packagePrice: packagePrice.toFixed(2),
+              quantity: 1,
+              totalPrice: packagePrice.toFixed(2),
+            });
+          }
+    
+          localStorage.setItem('cart', JSON.stringify(cartData));
+          updateCartDisplay(cartData);
+          updateSubtotal(cartData);
+        });
+      });
+    
+      function updateCartDisplay(cartData) {
+        cartItems.innerHTML = '';
+    
+        cartData.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+          cartItem.innerHTML = `
+            <img src="${packageImages[item.packageName]}" alt="${item.packageName} Image">
+            <div class="item-info">
+              <span class="item-name">${item.packageName}</span>
+              <span class="item-price">${item.totalPrice}</span>
+              <span class="item-quantity">x${item.quantity}</span>
+              <span class="remove-item" data-package="${item.packageName}">
+                <i class="fas fa-trash-alt"></i>
+              </span>
+            </div>
+          `;
+          cartItems.appendChild(cartItem);
+        });
+  
+        // Attach event listener to each remove item button
+        const removeButtons = document.querySelectorAll('.remove-item');
+        removeButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const packageName = this.getAttribute('data-package');
+            removeItem(packageName);
+          });
+        });
+    
+        if (cartData.length > 0) {
+          cart.classList.add('show');
+        } else {
+          cart.classList.remove('show');
+        }
+      }
+    
+      function updateSubtotal(cartData) {
+        cartTotal = cartData.reduce((total, item) => total + parseFloat(item.totalPrice), 0);
+    
+        if (subtotalDisplay) {
+          subtotalDisplay.textContent = cartTotal.toFixed(2);
+        } else {
+          console.error('Subtotal display element not found');
+        }
+      }
+    
+      const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+      updateCartDisplay(storedCart);
+      updateSubtotal(storedCart);
+    
+      closeCartButton.addEventListener('click', function() {
+        cart.classList.remove('hide');
+        cart.classList.remove('show');
+        localStorage.setItem('cartVisible', JSON.stringify(false));
+      });
+    
+      function openCart() {
+        cart.classList.add('show');
+        localStorage.setItem('cartVisible', JSON.stringify(true));
+      }
+    
+      if (isCartVisible) {
+        openCart();
+      }
+    
+      function removeItem(packageName) {
+        let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+        cartData = cartData.filter(item => item.packageName !== packageName);
+        localStorage.setItem('cart', JSON.stringify(cartData));
+        updateCartDisplay(cartData);
+        updateSubtotal(cartData);
+      }
+    });
+    const cart = document.querySelector('.cart');
+const closeCartButton = document.querySelector('.close-cart');
+
+// Function to close the cart
+function closeCart() {
+  cart.classList.remove('show'); // Removes the 'show' class to hide the cart
+  localStorage.setItem('cartState', 'closed'); // Save cart state to localStorage
+}
+
+// Attach event listener to close button
+closeCartButton.addEventListener('click', closeCart);
+
+// Check cart state on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cartState = localStorage.getItem('cartState');
+  if (cartState === 'open') {
+    cart.classList.add('show'); // Show cart if it was open before refresh
+  } else {
+    cart.classList.remove('show'); // Hide cart if it was closed before refresh
+  }
+});
+const navToggleBtn = document.querySelector('.nav-toggle-btn');
+  const navbarList = document.querySelector('.navbar-list');
+
+  // Add event listener to hamburger icon
+  navToggleBtn.addEventListener('click', () => {
+    // Toggle class to show/hide the navbar
+    navbarList.classList.toggle('active');
+  });
+  </script>
+  
+  
+  
+  
+  
+  
 
 </body>
+</html>

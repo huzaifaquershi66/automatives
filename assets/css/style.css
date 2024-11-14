@@ -1936,6 +1936,8 @@ body {
 /* Global Flex Layout for Pricing Packages */
 /* Pricing Section Background */
 /* Smooth Background Transition */
+/* Container for Pricing Packages */
+/* Container for Pricing Packages */
 .pricing-packages {
   display: flex;
   justify-content: center;
@@ -1948,22 +1950,23 @@ body {
 /* Pricing Box */
 .pricing-box {
   background: linear-gradient(145deg, #ffffff, #f1f2f6);
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   width: 340px;
   text-align: center;
-  padding: 50px 35px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px 35px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
   cursor: pointer;
   border: 2px solid #f0f0f0;
   color: #333;
   background-image: linear-gradient(to top, #ffffff, #f9f9f9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .pricing-box:hover {
-  transform: translateY(-12px);
+  transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.1);
   border-color: #e5e5e5;
 }
@@ -2022,13 +2025,14 @@ body {
 
 /* Price Styling */
 .price {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #ff6a88;
   margin-bottom: 25px;
   text-transform: uppercase;
   text-shadow: 0 3px 6px rgba(255, 106, 136, 0.4);
   transition: color 0.3s ease;
+  letter-spacing: 1px;
 }
 
 /* Button */
@@ -2036,10 +2040,10 @@ button {
   background: linear-gradient(135deg, #ff6a88, #ff8e88);
   color: #fff;
   border: none;
-  padding: 12px 28px;
+  padding: 14px 32px;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 30px;
+  border-radius: 35px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 8px 18px rgba(255, 106, 136, 0.4);
@@ -2087,14 +2091,31 @@ button:hover {
 
   .pricing-box {
     width: 90%;
-    padding: 30px;
+    padding: 35px;
   }
 
   .price {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 }
+
+
 .hope{
   font-size: 40px;
   font-family:'Times New Roman', Times, serif;
 }
+
+
+/* Initially hide the sidebar */
+/* Initially hide the navbar */
+.navbar-list {
+  display: none;
+  /* other styles */
+}
+
+/* Show the navbar when the active class is added */
+.navbar-list.active {
+  display: block;
+  /* Add additional styles for animation, transitions, etc. */
+}
+
