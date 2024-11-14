@@ -2107,15 +2107,9 @@ button:hover {
 
 
 /* Initially hide the sidebar */
-/* Initially hide the navbar */
-.navbar-list {
-  display: none;
-  /* other styles */
-}
+/* Initially hide the navbar
+/* /* .navbar-list {
+/* Style for the Navbar */
+/* Basic Navbar Styling */
 
-/* Show the navbar when the active class is added */
-.navbar-list.active {
-  display: block;
-  /* Add additional styles for animation, transitions, etc. */
-}
 

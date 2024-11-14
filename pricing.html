@@ -302,12 +302,14 @@
 
 <body>
 
+  
+
   <header class="header">
     <div class="container">
       <a href="#" class="logo">
         <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="128" height="63" alt="autofix home">
       </a>
-  
+
       <nav class="navbar" data-navbar>
         <ul class="navbar-list">
           <li><a href="index.html" class="navbar-link">Home</a></li>
@@ -316,7 +318,12 @@
           <li><a href="contact.html" class="navbar-link">Contact</a></li>
         </ul>
       </nav>
+
+      <a href="#" class="btn btn-primary">
+        <span class="span">Get a Quote</span>
   
+      </a>
+
       <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
         <span class="nav-toggle-icon icon-1"></span>
         <span class="nav-toggle-icon icon-2"></span>
@@ -324,6 +331,11 @@
       </button>
     </div>
   </header>
+
+<script src="script.js"></script>
+</body>
+</html>
+
   
   
 
@@ -410,7 +422,7 @@
     </div>
   </footer>
 
-  <script>
+  <script src="./assets/js/script.js">
     document.addEventListener('DOMContentLoaded', function() {
       const chooseButtons = document.querySelectorAll('.choose-package');
       const cart = document.getElementById('cart');
@@ -566,14 +578,17 @@ document.addEventListener('DOMContentLoaded', () => {
     cart.classList.remove('show'); // Hide cart if it was closed before refresh
   }
 });
-const navToggleBtn = document.querySelector('.nav-toggle-btn');
-  const navbarList = document.querySelector('.navbar-list');
+// Get elements for toggle
+// Get the toggle button and the navigation list
+// const navToggleBtn = document.querySelector('.nav-toggle-btn');
+// const navbarList = document.querySelector('.navbar-list');
 
-  // Add event listener to hamburger icon
-  navToggleBtn.addEventListener('click', () => {
-    // Toggle class to show/hide the navbar
-    navbarList.classList.toggle('active');
-  });
+// // Add an event listener to the toggle button
+// navToggleBtn.addEventListener('click', () => {
+//   // Toggle the 'active' class on the navbar list
+//   navbarList.classList.toggle('active');
+// });
+
   </script>
   
   
