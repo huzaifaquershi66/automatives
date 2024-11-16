@@ -118,23 +118,21 @@
             <p class="section-text">
               Get A VIN Check With Check Your Vehicle
             </p>
-
-            <form action="" class="hero-form">
-
+            <form id="hero-form" action="pricing.html" method="GET" class="hero-form">
               <div class="input-wrapper">
                 <label for="input-1" class="input-label">Vin Number</label>
-  
-                <input type="number" name="car-model" id="input-1" class="styled-textbox"
-                  placeholder="Vin Number" required >
+                <input type="number" name="car-model" id="input-1" class="styled-textbox" placeholder="Vin Number" required>
               </div>
-  
-              
-  
-              
-              <button type="submit" class="btn"><a href="about.html">Search</a></button>
-  
+              <button type="submit" class="btn">Search</button>
             </form>
-
+            
+            <!-- Message container -->
+            <div id="success-message" style="display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px; font-size: 16px; margin-top: 10px; text-align: center; font-weight: bold;">
+              Form Submitted Successfully!
+            </div>
+            
+            <!-- Message container -->
+           
           </div>
 
           <figure class="hero-banner" style="--width: 1228; --height: 789;">
@@ -152,126 +150,61 @@
       <!-- 
         - #SERVICE
       -->
-
-      <section class="section service has-bg-image" aria-labelledby="service-label"
-        style="background-image: url('./assets/images/service-bg.jpg')">
+      <section class="section about has-before" aria-labelledby="about-label">
         <div class="container">
-
-          <p class="section-subtitle :light" id="service-label">Our services</p>
-
-          <h2 class="h2 section-title">We Provide Great Services For your Vehicle</h2>
-
-          <ul class="service-list">
-
-            <li>
-              <div class="service-card">
-
-                <figure class="card-icon">
-                  <img src="./assets/images/services-1.png" width="110" height="110" loading="lazy" alt="Engine Repair">
-                </figure>
-
-                <h3 class="h3 card-title">Engine Repair</h3>
-
-                <p class="card-text">
-                  Autem velaum iure reare aenderit rui in ea roluptate esse ruam moles
+      
+          <figure class="about-banner">
+            <img src="./assets/images/about-banner.png" width="540" height="540" loading="lazy" alt="Automotive Reviews and Services" class="w-100">
+          </figure>
+      
+          <div class="about-content">
+      
+            <p class="section-subtitle :dark">About Us</p>
+      
+            <h2 class="h2 section-title">We’re Committed to Delivering Reliable Automotive Information</h2>
+      
+            <p class="section-text">
+              At Automotive History Checks, we provide in-depth and reliable automotive information to guide your decision-making process when buying or selling a vehicle. Our platform offers expert reviews, pricing tools, and detailed vehicle specifications to ensure you have all the information needed to make smarter choices.
+            </p>
+      
+            <p class="section-text">
+              Our mission is to equip car buyers and sellers with comprehensive insights, helping them avoid costly mistakes and ensure they get the best value for their money. Whether you're exploring new car models or browsing used car options, we're here to support your journey with trusted advice and resources.
+            </p>
+      
+            <ul class="about-list">
+      
+              <li class="about-item">
+                <p>
+                  <strong class="display-1 strong">10K+</strong> Happy Clients
                 </p>
-
-                <a href="#" class="btn-link">Read more</a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <figure class="card-icon">
-                  <img src="./assets/images/services-2.png" width="110" height="110" loading="lazy" alt="Brake Repair">
-                </figure>
-
-                <h3 class="h3 card-title">Brake Repair</h3>
-
-                <p class="card-text">
-                  Autem velaum iure reare aenderit rui in ea roluptate esse ruam moles
+              </li>
+      
+              <li class="about-item">
+                <p>
+                  <strong class="display-1 strong">100+</strong> Expert Reviews Published
                 </p>
-
-                <a href="#" class="btn-link">Read more</a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <figure class="card-icon">
-                  <img src="./assets/images/services-3.png" width="110" height="110" loading="lazy" alt="Tire Repair">
-                </figure>
-
-                <h3 class="h3 card-title">Tire Repair</h3>
-
-                <p class="card-text">
-                  Autem velaum iure reare aenderit rui in ea roluptate esse ruam moles
+              </li>
+      
+              <li class="about-item">
+                <p>
+                  <strong class="display-1 strong">5+</strong> Years in the Automotive Industry
                 </p>
-
-                <a href="#" class="btn-link">Read more</a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <figure class="card-icon">
-                  <img src="./assets/images/services-4.png" width="110" height="110" loading="lazy"
-                    alt="Battery Repair">
-                </figure>
-
-                <h3 class="h3 card-title">Battery Repair</h3>
-
-                <p class="card-text">
-                  Autem velaum iure reare aenderit rui in ea roluptate esse ruam moles
+              </li>
+      
+              <li class="about-item">
+                <p>
+                  <strong class="display-1 strong">99%</strong> Accuracy in Vehicle Pricing Insights
                 </p>
-
-                <a href="#" class="btn-link">Read more</a>
-
-              </div>
-            </li>
-
-            <li class="service-banner">
-              <img src="./assets/images/services-5.png" width="646" height="380" loading="lazy" alt="Red Car"
-                class="move-anim">
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <figure class="card-icon">
-                  <img src="./assets/images/services-6.png" width="110" height="110" loading="lazy"
-                    alt="Steering Repair">
-                </figure>
-
-                <h3 class="h3 card-title">Steering Repair</h3>
-
-                <p class="card-text">
-                  Autem velaum iure reare aenderit rui in ea roluptate esse ruam moles
-                </p>
-
-                <a href="#" class="btn-link">Read more</a>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn">
-            <span class="span">View All Services</span>
-
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </a>
-
+              </li>
+      
+            </ul>
+      
+          </div>
+      
         </div>
       </section>
-
-
+      
+      
 
 
 
@@ -279,61 +212,7 @@
         - #ABOUT
       -->
 
-      <section class="section about has-before" aria-labelledby="about-label">
-        <div class="container">
-
-          <figure class="about-banner">
-            <img src="./assets/images/about-banner.png" width="540" height="540" loading="lazy"
-              alt="vehicle repire equipments" class="w-100">
-          </figure>
-
-          <div class="about-content">
-
-            <p class="section-subtitle :dark">About Us</p>
-
-            <h2 class="h2 section-title">We’re Commited to Meet the quality</h2>
-
-            <p class="section-text">
-              Quis autem vel eum iure reprehenderit qui in ea volu velit esse quam nihil molestiae consequatur, vel
-              illum eui dolorem eum fugiat ruo.
-            </p>
-
-            <p class="section-text">
-              Reprehenderit qui in ea volu velit esse quam nihil moe stiae consequatur, vel illum eui.
-            </p>
-
-            <ul class="about-list">
-
-              <li class="about-item">
-                <p>
-                  <strong class="display-1 strong">8K+</strong> Happy Clients
-                </p>
-              </li>
-
-              <li class="about-item">
-                <p>
-                  <strong class="display-1 strong">22+</strong> Instruments
-                </p>
-              </li>
-
-              <li class="about-item">
-                <p>
-                  <strong class="display-1 strong">50+</strong> Years in market
-                </p>
-              </li>
-
-              <li class="about-item">
-                <p>
-                  <strong class="display-1 strong">99%</strong> Projects completed
-                </p>
-              </li>
-
-            </ul>
-
-          </div>
-
-        </div>
-      </section>
+ 
 
 
 
@@ -345,81 +224,81 @@
 
       <section class="section work" aria-labelledby="work-label">
         <div class="container">
-
+      
           <p class="section-subtitle :light" id="work-label">Our Work</p>
-
-          <h2 class="h2 section-title">Latest projects we have done</h2>
-
+      
+          <h2 class="h2 section-title">Latest Projects We Have Done</h2>
+      
           <ul class="has-scrollbar">
-
+      
             <li class="scrollbar-item">
               <div class="work-card">
-
+      
                 <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Engine Repair"
+                  <img src="https://i.gaw.to/carousel/photos/64/26/642620-digital-artist-revives-pontiac-aztek-with-inspiration-from-hyundai.jpg?480x200" width="350" height="406" loading="lazy" alt="Vehicle Review"
                     class="img-cover">
                 </figure>
-
+      
                 <div class="card-content">
-                  <p class="card-subtitle">Auto Repair</p>
-
-                  <h3 class="h3 card-title">Engine Repair</h3>
-
+                  <p class="card-subtitle">Automotive Information</p>
+      
+                  <h3 class="h3 card-title">Comprehensive Vehicle Reviews</h3>
+      
                   <a href="#" class="card-btn">
                     <span class="material-symbols-rounded">arrow_forward</span>
                   </a>
                 </div>
-
+      
               </div>
             </li>
-
+      
             <li class="scrollbar-item">
               <div class="work-card">
-
+      
                 <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-2.jpg" width="350" height="406" loading="lazy" alt="Car Tyre change"
+                  <img src="https://autorevo.com/wp-content/uploads/product_pricing_tool.jpg" width="350" height="406" loading="lazy" alt="Pricing Tools"
                     class="img-cover">
                 </figure>
-
+      
                 <div class="card-content">
-                  <p class="card-subtitle">Auto Repair</p>
-
-                  <h3 class="h3 card-title">Car Tyre change</h3>
-
+                  <p class="card-subtitle">Automotive Tools</p>
+      
+                  <h3 class="h3 card-title">Vehicle Pricing Tools</h3>
+      
                   <a href="#" class="card-btn">
                     <span class="material-symbols-rounded">arrow_forward</span>
                   </a>
                 </div>
-
+      
               </div>
             </li>
-
+      
             <li class="scrollbar-item">
               <div class="work-card">
-
+      
                 <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Battery Adjust"
+                  <img src="https://www.inspiringmeme.com/wp-content/uploads/2018/05/expert-car-advice.jpg" width="350" height="406" loading="lazy" alt="Expert Advice"
                     class="img-cover">
                 </figure>
-
+      
                 <div class="card-content">
-                  <p class="card-subtitle">Auto Repair</p>
-
-                  <h3 class="h3 card-title">Battery Adjust</h3>
-
+                  <p class="card-subtitle">Expert Consultation</p>
+      
+                  <h3 class="h3 card-title">Expert Automotive Advice</h3>
+      
                   <a href="#" class="card-btn">
                     <span class="material-symbols-rounded">arrow_forward</span>
                   </a>
                 </div>
-
+      
               </div>
             </li>
-
+      
           </ul>
-
+      
         </div>
       </section>
-
+      
     </article>
   </main>
 
@@ -443,7 +322,7 @@
           </a>
 
           <p class="footer-text">
-            Rerum necessitatibus saepe eveniet aut et voluptates repudiandae sint et molestiae non recusandae.
+            We provide reliable vehicle history reports by entering a VIN number. Get accurate data on accident history, mileage, title status, and more to make informed decisions.
           </p>
 
           <ul class="social-list">
@@ -506,7 +385,7 @@
             <a href="tel:+01234567890" class="footer-link">
               <span class="material-symbols-rounded">call</span>
 
-              <span class="span">+01 2 3456 7890</span>
+              <span class="span">+447704591503</span>
             </a>
           </li>
 
@@ -514,7 +393,7 @@
             <a href="mailto:info@autofix.com" class="footer-link">
               <span class="material-symbols-rounded">mail</span>
 
-              <span class="span">info@autofix.com</span>
+              <span class="span">automotivehistorychecks@gmail.com
             </a>
           </li>
 
@@ -522,7 +401,7 @@
             <address class="footer-link address">
               <span class="material-symbols-rounded">location_on</span>
 
-              <span class="span">21 King Street Melbourne, 3000, Australia</span>
+              <span class="span">Riverside Building, County Hall, London SE1 7PB, United Kingdom</span>
             </address>
           </li>
 
@@ -570,6 +449,15 @@
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
+  document.getElementById('hero-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the default form submission
+    document.getElementById('success-message').style.display = 'block'; // Show the success message
+    
+    // Wait 1 second before redirecting to pricing.html
+    setTimeout(function() {
+      window.location.href = 'pricing.html';  // Redirect to pricing.html
+    }, 2000);  // 1 second delay
+  });
   </script>
   <!--End of Tawk.to Script-->
 </body>
