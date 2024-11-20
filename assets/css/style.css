@@ -341,7 +341,12 @@ body {
   align-items: center;
 }
 
-.logo img { width: 100px; }
+/* .logo img { width: 100px; } */
+.logo img {
+  width: 180px !important; /* Adjust the width to your needs */
+  height: auto !important; /* Keep the aspect ratio */
+}
+
 
 .nav-toggle-icon {
   width: 30px;
@@ -2145,3 +2150,27 @@ button:focus {
 /* Basic Navbar Styling */
 
 
+.about-text {
+  font-size: 19px; /* PC and medium devices */
+}
+
+@media screen and (max-width: 768px) {
+  /* Medium devices (tablet, small laptops) */
+  .about-tex {
+    font-size: 19px; /* Medium devices: same size as PC */
+  }
+}
+
+@media screen and (min-width: 410px) and (max-width: 600px) {
+  /* Devices between 410px and 600px */
+  .about-tex {
+    font-size: 24px; /* Font size for devices between 410px and 600px */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Small devices (mobile screens under 480px) */
+  .about-tex {
+    font-size: 11px; /* Smaller font size for very small screens */
+  }
+}
