@@ -1956,155 +1956,111 @@ body {
 
 /* Pricing Box Styling */
 .pricing-box {
-  background: linear-gradient(145deg, #ffffff, #f0f4f8);
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.07);
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
   width: 340px;
   text-align: center;
   padding: 40px 35px;
   position: relative;
   cursor: pointer;
-  border: 2px solid #e4e4e4;
-  background-image: linear-gradient(to top, #ffffff, #f7f7f7);
   overflow: hidden;
+  border: 1px solid #ddd;
+  color: #222;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-  color: #333;
 }
 
 /* Hover effects for pricing box */
 .pricing-box:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 20px 35px rgba(0, 0, 0, 0.1);
-  border-color: #e5e5e5;
-  background: linear-gradient(145deg, #f7f7f7, #f0f4f8);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ccc;
+  background: linear-gradient(145deg, #ffffff, #f1f3f5);
 }
 
-/* Decorative Top Bar for a modern touch */
+/* Decorative Top Bar */
 .pricing-box::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #ff4081, #00bcd4, #ff4081);
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 5px;
+  background: linear-gradient(90deg, #00b4d8, #90e0ef, #0077b6);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Image Styling with a sleek look */
+/* Image Styling */
 .pricing-box img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* Hover effect on images */
 .pricing-box:hover img {
-  transform: scale(1.1);
-  opacity: 0.9;
+  transform: scale(1.05);
+  opacity: 0.95;
 }
 
 /* Title Styling */
 .pricing-box h3 {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: #333;
-  margin: 20px 0;
-  font-family: 'Mulish', sans-serif;
+  color: #212529;
+  margin: 15px 0;
+  font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
-  letter-spacing: 0.8px;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.7px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   transition: color 0.3s ease;
 }
 
-/* Description Styling for better readability */
+/* Description Styling */
 .pricing-box p {
   font-size: 1.1rem;
-  color: #666;
+  color: #555;
   margin-bottom: 20px;
-  font-family: 'Mulish', sans-serif;
-  line-height: 1.8;
-  padding: 0 15px;
-  max-height: 140px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  max-height: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Price Styling with a refined font and shadow */
-.price {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #ff4081;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  text-shadow: 0 3px 6px rgba(255, 106, 136, 0.2);
-  transition: color 0.3s ease;
-  letter-spacing: 1px;
   padding: 0 10px;
 }
 
-/* Button Styling with smooth interaction */
+/* Price Styling */
+.price {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ff4081;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 6px rgba(255, 64, 129, 0.2);
+  transition: color 0.3s ease;
+}
+
+/* Button Styling */
 button {
-  background: linear-gradient(135deg, #ff6a88, #ff4081);
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
   color: #fff;
   border: none;
-  padding: 16px 36px;
-  font-size: 1.2rem;
+  padding: 14px 34px;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 40px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 25px rgba(255, 106, 136, 0.3);
-  position: relative;
-  z-index: 1;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
 }
 
 button:hover {
-  background: linear-gradient(135deg, #ff4a6a, #ff7a8b);
+  background: linear-gradient(135deg, #0096c7, #48cae4);
   transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(255, 90, 122, 0.5);
-}
-
-/* Button focus effect */
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 106, 136, 0.5);
-}
-
-/* Cart Icon Styling for better interaction */
-.cart-icon {
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  background-color: #ff6a88;
-  padding: 14px;
-  border-radius: 50%;
-  box-shadow: 0 5px 15px rgba(255, 106, 136, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.cart-icon i {
-  font-size: 1.6rem;
-  color: white;
-}
-
-.cart-icon:hover {
-  background-color: #ff4a6a;
-  transform: scale(1.1);
-}
-
-/* Cart Icon Animation */
-.cart-icon:active {
-  transform: scale(1.2);
-  box-shadow: 0 5px 25px rgba(255, 90, 122, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.4);
 }
 
 /* Responsive Design */
@@ -2112,27 +2068,21 @@ button:focus {
   .pricing-packages {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
   }
 
   .pricing-box {
     width: 90%;
-    padding: 35px;
-    margin-top: 20px;
+    padding: 30px;
   }
 
   .price {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
 
   button {
-    padding: 12px 30px;
+    padding: 12px 28px;
     font-size: 1rem;
-  }
-
-  .cart-icon {
-    bottom: 20px;
-    right: 20px;
   }
 }
 
