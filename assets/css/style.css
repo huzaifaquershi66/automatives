@@ -1451,7 +1451,7 @@ body {
    */
 
   .container,
-  .hero-content { max-width: 720px; }
+  .hero-content { max-width: 720px; margin-top: 50px; }
 
   .btn { padding: 16px 32px; }
 
