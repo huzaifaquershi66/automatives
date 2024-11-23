@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel - Client Orders</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background: #f1f1f1;
+      background: #f9f9f9;
       margin: 0;
       padding: 0;
       display: flex;
@@ -19,14 +19,56 @@
       min-height: 100vh;
     }
 
-    .admin-panel {
+    .admin-panel, .login-container {
       width: 90%;
-      max-width: 1200px;
-      margin-top: 20px;
+      max-width: 800px;
       background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       padding: 30px;
+      text-align: center;
+      display: none;
+    }
+
+    .admin-panel.active, .login-container.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .login-container input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-container button {
+      width: 90%;
+      padding: 12px;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #732d91;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
     }
 
     .panel-header {
@@ -38,14 +80,10 @@
       margin-bottom: 30px;
     }
 
-    .panel-header h2 {
-      font-size: 30px;
-      color: #333;
-    }
-
     .search-bar input {
-      width: 300px;
-      padding: 12px;
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 16px;
@@ -54,7 +92,6 @@
     .order-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 30px;
     }
 
     .order-table th, .order-table td {
@@ -82,19 +119,17 @@
       color: #8e44ad;
     }
 
-    /* Media Query for Mobile */
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .panel-header h2 {
-        font-size: 24px;
-      }
-
-      .order-table th, .order-table td {
-        font-size: 14px;
-        padding: 12px;
+      h2 {
+        font-size: 20px;
       }
 
       .search-bar input {
         width: 100%;
+      }
+
+      .order-table th, .order-table td {
         font-size: 14px;
       }
     }
@@ -102,12 +137,19 @@
 </head>
 
 <body>
+  <div class="login-container active">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error" id="error"></p>
+  </div>
 
   <div class="admin-panel">
     <div class="panel-header">
       <h2>Client Orders</h2>
       <div class="search-bar">
-        <input type="text" placeholder="Search by order ID..." />
+        <input type="text" placeholder="Search by order ID...">
       </div>
     </div>
 
@@ -128,31 +170,38 @@
   </div>
 
   <script>
-    const productData = JSON.parse(localStorage.getItem('cart'));
-    if (productData && Array.isArray(productData)) {
-      const orderTableBody = document.getElementById('order-table-body');
-      let totalPrice = 0;
+    const productData = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderTableBody = document.getElementById('order-table-body');
 
-      productData.forEach((product, index) => {
+    if (productData.length > 0) {
+      productData.forEach(product => {
         const row = document.createElement('tr');
-
-        const orderId = `ORD${Math.floor(Math.random() * 58585)}`; // Simulated Order ID
-        const productName = product.packageName;
-        const quantity = product.quantity;
-        const price = product.packagePrice;
-        const orderTotal = price * quantity;
-        totalPrice += orderTotal;
+        const orderId = `ORD${Math.floor(Math.random() * 100000)}`;
+        const totalPrice = product.packagePrice * product.quantity;
 
         row.innerHTML = `
           <td>${orderId}</td>
-          <td>${productName}</td>
-          <td>${quantity}</td>
-          <td>$${orderTotal.toFixed(2)}</td>
+          <td>${product.packageName}</td>
+          <td>${product.quantity}</td>
+          <td>$${totalPrice.toFixed(2)}</td>
           <td><span class="order-status">Pending</span></td>
         `;
 
         orderTableBody.appendChild(row);
       });
+    }
+
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const error = document.getElementById('error');
+
+      if (username === 'hamdan' && password === 'hamdan123') {
+        document.querySelector('.login-container').classList.remove('active');
+        document.querySelector('.admin-panel').classList.add('active');
+      } else {
+        error.textContent = 'Invalid username or password!';
+      }
     }
   </script>
 </body>

@@ -470,16 +470,36 @@
     if (productData && Array.isArray(productData)) {
       let orderSummary = '';
       let totalPrice = 0;
-
+  
       productData.forEach(product => {
         orderSummary += `<p><strong>${product.packageName}</strong>: $${product.packagePrice} x ${product.quantity}</p>`;
         totalPrice += product.packagePrice * product.quantity;
       });
-
+  
       orderSummary += `<p class="total">Total: $${totalPrice.toFixed(2)}</p>`;
       document.getElementById('order-summary').innerHTML = orderSummary;
     }
+  
+    emailjs.init("your_user_id"); // Replace with your actual EmailJS user ID
+  
+    function sendEmail() {
+      // Prepare email parameters
+      const emailParams = {
+        to_email: "automotivehistorychecks@gmail.com", // Your admin email
+        order_details: `A payment of $${totalPrice.toFixed(2)} has been made for Products Order.`, // Total price
+        order_summary: document.getElementById('order-summary').innerHTML // Including detailed order summary
+      };
+  
+      emailjs.send("service_ik3jh3s", "template_4gkqf0x", emailParams)
+        .then(function (response) {
+          console.log("Email sent successfully!", response.status, response.text);
+        })
+        .catch(function (error) {
+          console.error("Failed to send email:", error);
+        });
+    }
   </script>
+  
 </body>
 
 </html>
