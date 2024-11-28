@@ -149,7 +149,7 @@
     <div class="panel-header">
       <h2>Client Orders</h2>
       <div class="search-bar">
-        <input type="text" placeholder="Search by order ID...">
+        <input type="text" id="search" placeholder="Search by order ID..." oninput="filterOrders()">
       </div>
     </div>
 
@@ -157,6 +157,7 @@
       <thead>
         <tr>
           <th>Order ID</th>
+          <th>Email</th>
           <th>Product</th>
           <th>Quantity</th>
           <th>Total Price</th>
@@ -167,20 +168,36 @@
         <!-- Orders will be dynamically added here -->
       </tbody>
     </table>
+
+    <div class="billing-info">
+      <h3>Billing Information</h3>
+      <p><strong>First Name:</strong> <span id="first-name">-</span></p>
+      <p><strong>Last Name:</strong> <span id="last-name">-</span></p>
+      <p><strong>VIN Number:</strong> <span id="vin-number">-</span></p>
+      <p><strong>Vehicle Name:</strong> <span id="vehicle-name">-</span></p>
+      <p><strong>Email:</strong> <span id="billing-email">-</span></p>
+      <p><strong>Country:</strong> <span id="country">-</span></p>
+      <p><strong>State:</strong> <span id="state">-</span></p>
+      <p><strong>Town/City:</strong> <span id="town">-</span></p>
+    </div>
   </div>
 
   <script>
+    // Fetch saved billing information and product data from localStorage
+    const billingInfo = JSON.parse(localStorage.getItem('billingInfo')) || {};
     const productData = JSON.parse(localStorage.getItem('cart')) || [];
     const orderTableBody = document.getElementById('order-table-body');
 
+    // Populate orders in the table
     if (productData.length > 0) {
-      productData.forEach(product => {
+      productData.forEach((product, index) => {
         const row = document.createElement('tr');
-        const orderId = `ORD${Math.floor(Math.random() * 100000)}`;
+        const orderId = `ORD${index + 1}`; // Incremental Order ID
         const totalPrice = product.packagePrice * product.quantity;
 
         row.innerHTML = `
           <td>${orderId}</td>
+          <td>${billingInfo['email'] || '-'}</td>
           <td>${product.packageName}</td>
           <td>${product.quantity}</td>
           <td>$${totalPrice.toFixed(2)}</td>
@@ -191,6 +208,17 @@
       });
     }
 
+    // Populate billing information
+    document.getElementById('first-name').textContent = billingInfo['first-name'] || '-';
+    document.getElementById('last-name').textContent = billingInfo['last-name'] || '-';
+    document.getElementById('vin-number').textContent = billingInfo['vin-number'] || '-';
+    document.getElementById('vehicle-name').textContent = billingInfo['vehicle-name'] || '-';
+    document.getElementById('billing-email').textContent = billingInfo['email'] || '-';
+    document.getElementById('country').textContent = billingInfo['country'] || '-';
+    document.getElementById('state').textContent = billingInfo['state'] || '-';
+    document.getElementById('town').textContent = billingInfo['town'] || '-';
+
+    // Admin login logic
     function login() {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
@@ -203,7 +231,16 @@
         error.textContent = 'Invalid username or password!';
       }
     }
+
+    // Filter orders based on input
+    function filterOrders() {
+      const searchValue = document.getElementById('search').value.toLowerCase();
+      const rows = orderTableBody.getElementsByTagName('tr');
+      Array.from(rows).forEach(row => {
+        const orderId = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+        row.style.display = orderId.includes(searchValue) ? '' : 'none';
+      });
+    }
   </script>
 </body>
-
 </html>

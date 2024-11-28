@@ -425,6 +425,7 @@
         <input type="text" name="first-name" placeholder="First Name" required>
         <input type="text" name="last-name" placeholder="Last Name" required>
         <input type="text" name="vin-number" placeholder="VIN Number" required>
+        <input type="text" name="vehicle-name" placeholder="Vehicle-Name" required>
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="text" name="country" placeholder="Country" required>
         <input type="text" name="state" placeholder="State" required>
@@ -457,12 +458,14 @@
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="adilsiddiqui2109@gmail.com">
       <input type="hidden" name="item_name" value="Products Order">
-      <input type="hidden" name="amount" value="50.00">
+      <!-- Update the 'amount' field to dynamically set the value -->
+      <input type="hidden" name="amount" id="paypal-amount" value="50">
       <input type="hidden" name="currency_code" value="USD">
       <input type="hidden" name="return" value="https://automotivehistorychecks.com/thank-you">
       <input type="hidden" name="cancel_return" value="https://automotivehistorychecks.com/cancel">
       <button type="submit" class="submit-btn">Pay</button>
     </form>
+    
   </div>
 
   <script>
@@ -478,6 +481,9 @@
   
       orderSummary += `<p class="total">Total: $${totalPrice.toFixed(2)}</p>`;
       document.getElementById('order-summary').innerHTML = orderSummary;
+  
+      // Set the total price in the PayPal form
+      document.getElementById('paypal-amount').value = totalPrice.toFixed(2);
     }
   
     emailjs.init("your_user_id"); // Replace with your actual EmailJS user ID
@@ -498,6 +504,43 @@
           console.error("Failed to send email:", error);
         });
     }
+  
+    // Select the form element
+    const billingForm = document.querySelector('.billing-info form');
+  
+    // Add an event listener for form changes
+    billingForm.addEventListener('input', () => {
+      // Get all input fields in the form
+      const formData = new FormData(billingForm);
+  
+      // Create an object to store data
+      let billingData = {};
+  
+      // Iterate through form fields and store key-value pairs
+      formData.forEach((value, key) => {
+        billingData[key] = value;
+      });
+  
+      // Save the object as a JSON string in localStorage
+      localStorage.setItem('billingInfo', JSON.stringify(billingData));
+    });
+  
+    // Retrieve data from localStorage and populate the form on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedData = localStorage.getItem('billingInfo');
+  
+      if (savedData) {
+        const billingData = JSON.parse(savedData);
+  
+        // Populate the form fields with saved data
+        Object.entries(billingData).forEach(([key, value]) => {
+          const inputField = billingForm.querySelector(`[name="${key}"]`);
+          if (inputField) {
+            inputField.value = value;
+          }
+        });
+      }
+    });
   </script>
   
 </body>

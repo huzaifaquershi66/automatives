@@ -122,8 +122,17 @@
             <form id="hero-form" action="pricing.html" method="GET" class="hero-form">
               <div class="input-wrapper">
                 <label for="input-1" class="input-label">Vin Number</label>
-                <input type="number" name="car-model" id="input-1" class="styled-textbox" placeholder="Vin Number" required>
-              </div>
+                <input 
+                type="text" 
+                name="car-model" 
+                id="input-1" 
+                class="styled-textbox" 
+                placeholder="Vin Number" 
+                required 
+                pattern="[A-Za-z0-9]{17}" 
+                title="VIN must be exactly 17 characters long, containing only letters and numbers."
+              >
+                            </div>
               <button type="submit" class="btn">Search</button>
             </form>
             
@@ -236,7 +245,7 @@
               <div class="work-card">
       
                 <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="https://i.gaw.to/carousel/photos/64/26/642620-digital-artist-revives-pontiac-aztek-with-inspiration-from-hyundai.jpg?480x200" width="350" height="406" loading="lazy" alt="Vehicle Review"
+                  <img src="https://www.wikihow.com/images/thumb/5/55/Find-Your-VIN-%28Vehicle-Identification-Number%29-Step-1-Version-3.jpg/v4-460px-Find-Your-VIN-%28Vehicle-Identification-Number%29-Step-1-Version-3.jpg.webp" width="350" height="406" loading="lazy" alt="Vehicle Review"
                     class="img-cover">
                 </figure>
       
