@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You</title>
+  <style>
+    .order-details {
+      margin-top: 20px;
+    }
+    .download-btn {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-container">
+    <h2>Thank You for Your Purchase!</h2>
+    <div class="order-details" id="order-details">
+      <!-- Order details will be dynamically populated here -->
+    </div>
+    <button class="download-btn" id="download-slip">Download Order Slip</button>
+  </div>
+
+  <script>
+    // Fetch order details from localStorage
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+    
+    if (orderDetails) {
+      const { orderId, products, totalPrice } = orderDetails;
+
+      let orderSummary = `
+        <h3>Order ID: ${orderId}</h3>
+        <h4>Order Details:</h4>
+        <ul>
+      `;
+
+      products.forEach(product => {
+        orderSummary += `
+          <li><strong>${product.packageName}</strong>: ${product.quantity} x $${product.packagePrice}</li>
+        `;
+      });
+
+      orderSummary += `
+        </ul>
+        <p><strong>Total Price:</strong> $${totalPrice.toFixed(2)}</p>
+      `;
+
+      document.getElementById('order-details').innerHTML = orderSummary;
+
+      // Add event listener to the download button
+      document.getElementById('download-slip').addEventListener('click', () => {
+        const orderSlip = `Order ID: ${orderId}\nTotal Price: $${totalPrice.toFixed(2)}\nProducts:\n${products.map(product => `${product.packageName}: ${product.quantity} x $${product.packagePrice}`).join('\n')}`;
+        const blob = new Blob([orderSlip], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Order_${orderId}_Slip.txt`;
+        link.click();
+      });
+
+      // Call backend API to update order status to "completed"
+      fetch('https://newweb-production-2f78.up.railway.app/complete-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderId: orderId }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Order status updated to completed:', data);
+      })
+      .catch(error => {
+        console.error('Error updating order status:', error);
+      });
+    } else {
+      alert('Order details not found.');
+    }
+  </script>
+</body>
+</html>

@@ -3,420 +3,1057 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.tailwindcss.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Helvetica', 'Arial', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+       .nav-gradient {
+            background: linear-gradient(90deg, #1a1d20 0%, #212529 100%);
+        }
+        :root {
+    --primary: #3b82f6;
+    --secondary: #1d4ed8;
+    --accent: #f59e0b;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --success: #10b981;
+    --error: #ef4444;
+    --warning: #f59e0b;
+}
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Autofix - Auto Maintenance & Repair Service</title>
-  <meta name="title" content="Autofix - Auto Maintenance & Repair Service">
-  <meta name="description" content="This is a vehicle repair html template made by codewithsadee">
+/* Enhanced Gradients */
+.hero-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 60px rgba(37, 99, 235, 0.3);
+}
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+.hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    animation: patternFloat 30s linear infinite;
+}
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Mulish&display=swap"
-    rel="stylesheet">
+/* Modern Card Styles */
+.modern-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
 
-  <!-- 
-    - material icon font
-  -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,600,0,0" />
+.modern-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(59, 130, 246, 0.3);
+}
 
+/* Enhanced Animations */
+@keyframes patternFloat {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5); }
+}
 
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(59, 130, 246, 0.2); }
+    50% { border-color: rgba(59, 130, 246, 0.6); }
+}
 
+/* Enhanced Button Styles */
+.modern-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="https://t4.ftcdn.net/jpg/09/12/35/85/360_F_912358510_PmNNiQSlIEWL1lq9BBwGBMKIAERBa1W8.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+.modern-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
 
+@keyframes shimmer {
+    100% { left: 100%; }
+}
+
+/* Enhanced Feature Items */
+.feature-item {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-item:hover {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.2) 100%);
+    transform: translateX(10px) translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Stats Card */
+.stat-card {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.2) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: borderGlow 3s infinite;
+}
+
+.stat-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    animation: glowPulse 2s infinite;
+}
+
+/* Timeline Enhancements */
+.timeline-dot {
+    animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary), var(--secondary));
+    border-radius: 5px;
+    border: 2px solid var(--dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--secondary), var(--primary));
+}
+
+/* Section Enhancements */
+.section-gradient {
+    background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+    position: relative;
+}
+
+.section-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+@keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -50px) scale(1.1); }
+    50% { transform: translate(-20px, 20px) scale(0.9); }
+    75% { transform: translate(20px, 50px) scale(0.95); }
+}
+
+.animate-blob {
+    animation: blob 10s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.modern-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+.testimonial-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .review-bg {
+            background: linear-gradient(to bottom, 
+                rgba(30, 41, 59, 0.95), 
+                rgba(15, 23, 42, 0.98)
+            ),
+            url('https://your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: #3b82f6;
+        }
+
+        .rating-stars {
+            color: #fbbf24;
+            display: flex;
+            gap: 4px;
+        }
+
+        .profile-image-border {
+            padding: 3px;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            border-radius: 50%;
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #3b82f6;
+        }
+
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 55%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+  </style>
 </head>
 
-<body>
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header">
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="128" height="63" alt="autofix home">
-      </a>
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-
-          <li>
-            <a href="index.html" class="navbar-link">Home</a>
-          </li>
-
-          <li>
-            <a href="about.html" class="navbar-link">About</a>
-          </li>
-
-          <li>
-            <a href="pricing.html" class="navbar-link">Pricing</a>
-          </li>
-
-          <li>
-            <a href="contact.html" class="navbar-link">Contact</a>
-          </li>
-          <li><a href="vision.html" class="navbar-link">Our Vision</a></li>
-
-        </ul>
-      </nav>
-
-      <a href="#" class="btn btn-primary">
-        <span class="span">Get a Quote</span>
-
-        <span class="material-symbols-rounded">arrow_forward</span>
-      </a>
-
-      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
-        <span class="nav-toggle-icon icon-1"></span>
-        <span class="nav-toggle-icon icon-2"></span>
-        <span class="nav-toggle-icon icon-3"></span>
-      </button>
-
-    </div>
-  </header>
-
-  
-
-
-  <main>
-    <article>
-    
-      <!-- 
-        - #HERO
-      -->
-     
-      
-      <div class="color" style="background-image: url('./assets/images/hero-bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; padding: 20px; color: white;">
-        <div class="content" >
-            <div class="left" data-aos="zoom-in-right" data-aos-delay="100" data-aos-easing="ease-in-out">
-                <img src="assets/images/labo.png" alt="">
+<body class="bg-[#0A0C10] text-white overflow-x-hidden"> 
+  <div class="h-20 fixed top-0 left-0 right-0 z-50 w-full font-sans nav-gradient border-b border-gray-700/30 backdrop-blur-sm shadow-lg">
+    <!-- Logo Section -->
+    <div class="max-w-7xl mx-auto px-4 h-full">
+        <div class="flex items-center justify-between h-full">
+            <div class="flex items-center">
+                <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" 
+                     class="h-32 mt-8 w-auto max-w-full transform hover:scale-105 transition-transform duration-300" 
+                     alt="Logo">
             </div>
-         
-            <div style="margin-top: 50px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;" 
-            class="right" 
-            data-aos="zoom-in-left" 
-            data-aos-delay="100" 
-            data-aos-easing="ease-in-out">
-         <h2 style="font-size: 3.5rem; color: white; margin-bottom: 20px; word-wrap: break-word;">ABOUT Automotive History Checks</h2>
-         <p style="color: blanchedalmond; line-height: 1.8; font-size: 1.3rem; max-width: 800px; word-wrap: break-word;">
-           Empowering smarter automotive decisions with reliable insights, expert reviews, and in-depth reports. 
-           Whether buying or selling, we've got the tools to help you navigate the journey confidently.
-         </p>
-       </div>
-       
-              
-              
-                <div class="icon">
-                    <img src="assets/images/instagram (4).png" alt="">
-                    <img src="assets/images/telegram.png" alt="">
-                    <img src="assets/images/github.png" alt="">
-                    <img src="assets/images/linkedin (1).png" alt="">
+
+            <!-- Navigation Links -->
+            <div class="hidden xl:flex items-center space-x-8 text-gray-100 text-[15px] font-medium" id="nav-links">
+                <!-- Links will be populated by JavaScript -->
+            </div>
+
+            <!-- Actions Section -->
+            <div class="flex items-center space-x-6">
+                <!-- Get Quote Button -->
+                <a href="/pricing.html" class="hidden xl:block">
+                    <button class="px-6 py-2.5 text-[13px] font-semibold text-white uppercase tracking-wider 
+                                 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg
+                                 hover:from-blue-700 hover:to-blue-800
+                                 transform hover:-translate-y-0.5 transition-all duration-300
+                                 shadow-lg hover:shadow-blue-500/30">
+                        Get Quote
+                    </button>
+                </a>
+
+                <!-- Search Button -->
+                <div class="hidden xl:flex items-center justify-center w-10 h-10 rounded-lg
+                            bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50
+                            transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer
+                            group">
+                    <i class="fas fa-search text-gray-400 group-hover:text-white text-[16px] transition-colors duration-300"></i>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div id="bars-icon"
+                     class="xl:hidden flex items-center justify-center w-10 h-10 rounded-lg
+                            bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50
+                            transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer
+                            group">
+                    <i class="fas fa-bars text-gray-400 group-hover:text-white text-[16px] transition-colors duration-300"></i>
                 </div>
             </div>
-            
-            
-            
         </div>
     </div>
-    
-  
-    
-      <!-- - #ABOUT -->
-<hr>
-<section style="background-color: #f8f9fa; padding: 60px 20px; text-align: center;">
-  <div style="max-width: 1200px; margin: auto; color: #333; font-family: 'Mulish', sans-serif; line-height: 1.8;">
-    <!-- Section Heading -->
-    <h2 style="font-size: 2.8rem; color: #212529; margin-bottom: 40px; font-weight: 700;">About Us</h2>
-    
-    <!-- First Paragraph -->
-    <p style="font-size: 1.5rem; margin-bottom: 30px; text-align: justify;">
-      At <strong>Automotive History Checks</strong>, we are committed to delivering <strong>reliable</strong> and 
-      <strong>detailed automotive insights</strong>. Our platform offers comprehensive car reviews, advanced pricing tools, 
-      and expert advice to help you make well-informed decisions when buying or selling vehicles.
-    </p>
+</div>
 
-    <!-- Second Paragraph -->
-    <p style="font-size: 1.5rem; margin-bottom: 40px; text-align: justify;">
-      Avoid costly mistakes and ensure you maximize the value of your investment with our resources. From 
-      <strong>in-depth vehicle reports</strong> to the latest <strong>pricing trends</strong>, we empower you to confidently 
-      navigate the automobile market. Explore a wide range of new and used car options with accurate and trustworthy data.
-    </p>
-
-    <!-- Statistics Section -->
-    <div style="display: flex; justify-content: center; gap: 50px; margin-top: 50px; flex-wrap: wrap;">
-      <!-- Stat Box 1 -->
-      <div style="flex: 1 1 200px; text-align: center; padding: 20px;">
-        <strong style="font-size: 3rem; color: #007bff;">8K+</strong>
-        <p style="font-size: 1.2rem; margin-top: 10px; color: #555;">Happy Clients</p>
-      </div>
-      <!-- Stat Box 2 -->
-      <div style="flex: 1 1 200px; text-align: center; padding: 20px;">
-        <strong style="font-size: 3rem; color: #007bff;">22+</strong>
-        <p style="font-size: 1.2rem; margin-top: 10px; color: #555;">Vehicle Categories Reviewed</p>
-      </div>
-      <!-- Stat Box 3 -->
-      <div style="flex: 1 1 200px; text-align: center; padding: 20px;">
-        <strong style="font-size: 3rem; color: #007bff;">50+</strong>
-        <p style="font-size: 1.2rem; margin-top: 10px; color: #555;">Years of Expertise</p>
-      </div>
-      <!-- Stat Box 4 -->
-      <div style="flex: 1 1 200px; text-align: center; padding: 20px;">
-        <strong style="font-size: 3rem; color: #007bff;">99%</strong>
-        <p style="font-size: 1.2rem; margin-top: 10px; color: #555;">Accuracy in Pricing & Reviews</p>
-      </div>
+<!-- Mobile Menu Overlay (Add this if you haven't already) -->
+<div id="mobile-menu" 
+     class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden"
+     onclick="this.classList.add('hidden')">
+    <div class="fixed right-0 top-0 h-full w-[280px] bg-[#1a1d20] shadow-2xl"
+         onclick="event.stopPropagation()">
+        <div class="p-5">
+            <div class="flex justify-end">
+                <button class="p-2 text-gray-400 hover:text-white"
+                        onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="mt-5 space-y-4" id="mobile-nav-links">
+                <!-- Mobile links will be populated by JavaScript -->
+            </div>
+            <div class="mt-8">
+                <a href="/pricing.html">
+                    <button class="w-full px-6 py-3 text-[13px] font-semibold text-white uppercase tracking-wider 
+                                 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg
+                                 hover:from-blue-700 hover:to-blue-800 transition-all duration-300
+                                 shadow-lg hover:shadow-blue-500/30">
+                        Get Quote
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
+</div>
+
+
+
+<div class="min-h-screen overflow-x-hidden w-full">
+  <!-- Hero Section -->
+  <div class="hero-gradient min-h-[600px] pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img 
+            src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+            alt="Background"
+            class="w-full h-full object-cover opacity-20"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 opacity-90"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto relative z-10">
+        <div class="max-w-4xl">
+            <nav class="flex items-center space-x-4 text-blue-100 mb-8">
+                <a href="/" class="hover:text-white transition-colors text-sm uppercase tracking-wider group">
+                    Home
+                    <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+                </a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span class="text-white font-medium text-sm uppercase tracking-wider">About Us</span>
+            </nav>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight animate-fadeIn relative">
+                Discover Your Vehicle's 
+                <br class="hidden sm:block"/>
+                <span class="relative inline-block">
+                    Complete History
+                    <span class="absolute -inset-1 bg-blue-500 opacity-20 blur-lg"></span>
+                </span>
+            </h1>
+            
+            <p class="text-blue-100 text-lg sm:text-xl lg:text-2xl max-w-2xl leading-relaxed animate-fadeIn delay-100 relative">
+                Industry-leading VIN check service trusted by 
+                <span class="relative inline-block px-2">
+                    over 2 million
+                    <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-400 opacity-30"></span>
+                </span> 
+                users worldwide
+            </p>
+
+            <!-- Optional: Adding a floating element for visual interest -->
+            <div class="absolute top-20 right-10 w-20 h-20 bg-blue-500 rounded-full opacity-10 blur-xl animate-pulse"></div>
+            <div class="absolute bottom-10 left-20 w-32 h-32 bg-blue-400 rounded-full opacity-10 blur-xl animate-pulse delay-1000"></div>
+        </div>
+    </div>
+
+    <!-- Optional: Animated particles or shapes -->
+    <div class="absolute bottom-0 right-0 w-1/3 h-1/3 opacity-10">
+        <div class="absolute w-10 h-10 bg-blue-500 rounded-full animate-float" style="top: 20%; left: 30%"></div>
+        <div class="absolute w-6 h-6 bg-blue-300 rounded-full animate-float" style="top: 60%; left: 60%"></div>
+        <div class="absolute w-8 h-8 bg-blue-400 rounded-full animate-float" style="top: 40%; left: 80%"></div>
+    </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <!-- Left Section -->
+            <div class="lg:w-1/2 relative">
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img 
+                        src="https://www.autoleaders.com.au/wp-content/uploads/2020/08/car-inspection-scaled.jpg"
+                        alt="Professional Vehicle Inspection"
+                        class="w-full h-[400px] sm:h-[600px] object-cover"
+                    />
+                    <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black to-transparent">
+                        <div class="flex flex-wrap gap-4">
+                            <div class="stat-card px-6 py-4 rounded-xl">
+                                <p class="text-blue-400 font-semibold">Trusted by</p>
+                                <p class="text-white text-2xl font-bold">2M+ Users</p>
+                            </div>
+                            <div class="stat-card px-6 py-4 rounded-xl">
+                                <p class="text-blue-400 font-semibold">Success Rate</p>
+                                <p class="text-white text-2xl font-bold">99.9%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="lg:w-1/2">
+                <div class="modern-card rounded-2xl p-8 sm:p-12">
+                    <span class="inline-block bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-8">
+                        Premium VIN Check Service
+                    </span>
+
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+                        Your Trusted Partner in Vehicle History Verification
+                    </h2>
+
+                    <p class="text-gray-300 text-lg sm:text-xl leading-relaxed mb-12">
+                        Access comprehensive vehicle history reports with our advanced VIN checking system. Make informed decisions with confidence.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+                        <div class="modern-card p-6 rounded-xl">
+                            <i class="fas fa-shield-alt text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold text-white mb-2">Secure & Reliable</h3>
+                            <p class="text-gray-400">Industry-leading security measures for your peace of mind</p>
+                        </div>
+
+                        <div class="modern-card p-6 rounded-xl">
+                            <i class="fas fa-bolt text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold text-white mb-2">Instant Results</h3>
+                            <p class="text-gray-400">Get comprehensive reports in seconds</p>
+                        </div>
+                    </div>
+
+                    <button class="w-full sm:w-auto modern-button px-8 py-4 rounded-xl text-white font-bold text-lg flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 transition-all">
+                        <span>Check Your VIN Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New History Section -->
+<div class="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0c10] to-[#1a1f2c] overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-10 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+  </div>
+
+  <div class="container mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-20">
+          <span class="inline-block px-4 py-2 bg-blue-500/10 rounded-full text-blue-400 text-sm font-semibold mb-4">
+              OUR TIMELINE
+          </span>
+          <h2 class="text-4xl sm:text-6xl font-bold text-white mb-6 relative inline-block">
+              Our Journey
+              <span class="absolute -inset-1 bg-blue-500 opacity-20 blur-lg"></span>
+          </h2>
+          <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              Discover how we've evolved to become the industry leader in vehicle history verification, 
+              setting new standards in automotive information services.
+          </p>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="max-w-5xl mx-auto relative">
+          <!-- Timeline Line -->
+          <div class="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 opacity-20"></div>
+
+          <!-- Timeline Items -->
+          <div class="space-y-16">
+              <!-- 2014 -->
+              <div class="relative group">
+                  <div class="flex items-center sm:justify-between flex-col sm:flex-row sm:even:flex-row-reverse">
+                      <!-- Date -->
+                      <div class="sm:w-[45%] text-right sm:pr-10 mb-4 sm:mb-0">
+                          <span class="inline-block px-6 py-3 bg-blue-500/10 rounded-full text-blue-400 font-bold text-xl tracking-wide group-hover:scale-110 transition-transform duration-300">
+                              2014
+                          </span>
+                      </div>
+
+                      <!-- Dot -->
+                      <div class="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/4">
+                          <div class="w-8 h-8 bg-blue-500 rounded-full border-4 border-[#0a0c10] shadow-[0_0_0_6px_rgba(59,130,246,0.2)] group-hover:scale-125 transition-transform duration-300"></div>
+                      </div>
+
+                      <!-- Content -->
+                      <div class="sm:w-[45%] sm:pl-10 pl-10">
+                          <div class="modern-card p-8 hover:translate-y-[-10px] transition-all duration-300">
+                              <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                                  The Beginning
+                              </h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Founded with a revolutionary vision to transform vehicle history reporting through innovative technology and comprehensive data analysis.
+                              </p>
+                              <div class="mt-6 flex items-center text-blue-400">
+                                  <i class="fas fa-chart-line mr-2"></i>
+                                  <span class="text-sm font-semibold">First 10,000 Reports Generated</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- 2018 -->
+              <div class="relative group">
+                  <div class="flex items-center sm:justify-between flex-col sm:flex-row sm:even:flex-row-reverse">
+                      <div class="sm:w-[45%] text-right sm:pr-10 mb-4 sm:mb-0">
+                          <span class="inline-block px-6 py-3 bg-purple-500/10 rounded-full text-purple-400 font-bold text-xl tracking-wide group-hover:scale-110 transition-transform duration-300">
+                              2018
+                          </span>
+                      </div>
+
+                      <div class="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/4">
+                          <div class="w-8 h-8 bg-purple-500 rounded-full border-4 border-[#0a0c10] shadow-[0_0_0_6px_rgba(147,51,234,0.2)] group-hover:scale-125 transition-transform duration-300"></div>
+                      </div>
+
+                      <div class="sm:w-[45%] sm:pl-10 pl-10">
+                          <div class="modern-card p-8 hover:translate-y-[-10px] transition-all duration-300">
+                              <h3 class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+                                  Global Expansion
+                              </h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Extended our services across 50+ countries, establishing partnerships with major automotive manufacturers and dealers worldwide.
+                              </p>
+                              <div class="mt-6 flex items-center text-purple-400">
+                                  <i class="fas fa-globe mr-2"></i>
+                                  <span class="text-sm font-semibold">Present in 50+ Countries</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- 2024 -->
+              <div class="relative group">
+                  <div class="flex items-center sm:justify-between flex-col sm:flex-row sm:even:flex-row-reverse">
+                      <div class="sm:w-[45%] text-right sm:pr-10 mb-4 sm:mb-0">
+                          <span class="inline-block px-6 py-3 bg-pink-500/10 rounded-full text-pink-400 font-bold text-xl tracking-wide group-hover:scale-110 transition-transform duration-300">
+                              2024
+                          </span>
+                      </div>
+
+                      <div class="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/4">
+                          <div class="w-8 h-8 bg-pink-500 rounded-full border-4 border-[#0a0c10] shadow-[0_0_0_6px_rgba(236,72,153,0.2)] group-hover:scale-125 transition-transform duration-300"></div>
+                      </div>
+
+                      <div class="sm:w-[45%] sm:pl-10 pl-10">
+                          <div class="modern-card p-8 hover:translate-y-[-10px] transition-all duration-300">
+                              <h3 class="text-2xl font-bold bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent mb-4">
+                                  Innovation Leader
+                              </h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Revolutionized the industry with AI-powered VIN verification technology, processing over 10 million reports annually.
+                              </p>
+                              <div class="mt-6 flex items-center text-pink-400">
+                                  <i class="fas fa-robot mr-2"></i>
+                                  <span class="text-sm font-semibold">AI-Powered Technology</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<section class="review-bg py-20 px-4 sm:px-6 lg:px-8">
+  <!-- Header Section -->
+  <div class="max-w-7xl mx-auto text-center mb-16">
+      <span class="inline-block text-blue-500 font-semibold mb-4 tracking-wider uppercase text-sm">
+          TESTIMONIALS
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          What Our Clients Say
+      </h2>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Discover how our premium VIN check service has helped thousands make informed decisions about their vehicle purchases.
+      </p>
+  </div>
+
+  <!-- Reviews Grid -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+    <!-- Review Card 1 -->
+    <div class="testimonial-card card-shine rounded-2xl p-8 relative bg-gradient-to-br from-gray-900 to-gray-800 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/30">
+        <div class="absolute top-4 right-4">
+            <i class="fas fa-quote-right text-4xl text-blue-500/20"></i>
+        </div>
+        <div class="flex items-center mb-6">
+            <div class="profile-image-border relative">
+                <div class="absolute inset-0 bg-blue-500 rounded-full blur-sm animate-pulse"></div>
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OKP5u46e_97eX4tckopWv8JDRyVhIVtFIw&s"
+                    alt="Sarah Johnson"
+                    class="w-16 h-16 rounded-full object-cover relative z-10 border-2 border-blue-500"
+                />
+            </div>
+            <div class="ml-4">
+                <h4 class="text-xl font-semibold text-white">Sarah Johnson</h4>
+                <p class="text-blue-400">Used Car Dealer</p>
+                <div class="rating-stars mt-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            "The VIN reports provided were incredibly detailed and accurate. It helped me build trust with my customers by ensuring complete transparency in every transaction."
+        </p>
+        <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-700">
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-500 transition-colors">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-500 transition-colors">
+                    <i class="fab fa-twitter text-lg"></i>
+                </a>
+            </div>
+            <span class="text-gray-400 text-sm flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Verified Review
+            </span>
+        </div>
+    </div>
+
+    <!-- Review Card 2 -->
+    <div class="testimonial-card card-shine rounded-2xl p-8 relative bg-gradient-to-br from-gray-900 to-gray-800 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/30">
+        <div class="absolute top-4 right-4">
+            <i class="fas fa-quote-right text-4xl text-purple-500/20"></i>
+        </div>
+        <div class="flex items-center mb-6">
+            <div class="profile-image-border relative">
+                <div class="absolute inset-0 bg-purple-500 rounded-full blur-sm animate-pulse"></div>
+                <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Michael Chen"
+                    class="w-16 h-16 rounded-full object-cover relative z-10 border-2 border-purple-500"
+                />
+            </div>
+            <div class="ml-4">
+                <h4 class="text-xl font-semibold text-white">Michael Chen</h4>
+                <p class="text-purple-400">Car Enthusiast</p>
+                <div class="rating-stars mt-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            "As a classic car collector, accuracy is paramount. This service has been invaluable in verifying vehicle histories before making significant investments. The depth of information is impressive."
+        </p>
+        <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-700">
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon text-gray-400 hover:text-purple-500 transition-colors">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-purple-500 transition-colors">
+                    <i class="fab fa-facebook text-lg"></i>
+                </a>
+            </div>
+            <span class="text-gray-400 text-sm flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Verified Review
+            </span>
+        </div>
+    </div>
+
+    <!-- Review Card 3 -->
+    <div class="testimonial-card card-shine rounded-2xl p-8 relative bg-gradient-to-br from-gray-900 to-gray-800 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/30">
+        <div class="absolute top-4 right-4">
+            <i class="fas fa-quote-right text-4xl text-emerald-500/20"></i>
+        </div>
+        <div class="flex items-center mb-6">
+            <div class="profile-image-border relative">
+                <div class="absolute inset-0 bg-emerald-500 rounded-full blur-sm animate-pulse"></div>
+                <img
+                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    alt="Emily Rodriguez"
+                    class="w-16 h-16 rounded-full object-cover relative z-10 border-2 border-emerald-500"
+                />
+            </div>
+            <div class="ml-4">
+                <h4 class="text-xl font-semibold text-white">Emily Rodriguez</h4>
+                <p class="text-emerald-400">Auto Insurance Agent</p>
+                <div class="rating-stars mt-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            "This VIN check service has streamlined our insurance verification process. The comprehensive reports help us assess risks accurately and process claims faster. Simply outstanding!"
+        </p>
+        <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-700">
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon text-gray-400 hover:text-emerald-500 transition-colors">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-emerald-500 transition-colors">
+                    <i class="fab fa-twitter text-lg"></i>
+                </a>
+            </div>
+            <span class="text-gray-400 text-sm flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Verified Review
+            </span>
+        </div>
+    </div>
+</div>
+
+  <!-- Call to Action -->
+  <div class="text-center mt-16">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+          Read More Reviews
+      </button>
   </div>
 </section>
 
-
-
-
-
-
-
-      <!-- 
-        - #WORK
-      -->
-
-    </article>
-  </main>
-  <div class="joko"><h2>Our Partners</h2></div>
-  <div class="slider" style="background-image: url('/assets/images/service-bg.jpg'); background-size: cover; background-position: center; height: 300px;">
-    <div class="slide-track">
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
-      </div>
-      <div class="slide">
-        <img class="img1" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-      </div>
-    </div>
-  </div>
-  
-
-
-
-<hr>
- <!-- <<- #FOOTER --> 
-
- <footer class="footer">
-
-  <div class="footer-top section">
-    <div class="container">
-
-      <div class="footer-brand">
-
-        <a href="#" class="logo">
-          <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="128" height="63" alt="autofix home">
-        </a>
-
-        <p class="footer-text">
-          Unlock the full history of any vehicle with our detailed VIN-based reports. Get verified information on accident history, mileage accuracy, title status, ownership records, and more. With our trusted reports, you can make smarter, more confident decisions—whether you're buying or selling—ensuring peace of mind and protecting your investment
-        </p>
-
-        <ul class="social-list">
-
-          <li>
-            <a href="#" class="social-link">
-              <img src="./assets/images/facebook.svg" alt="facebook">
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <img src="./assets/images/instagram.svg" alt="instagram">
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <img src="./assets/images/twitter.svg" alt="twitter">
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-      <ul class="footer-list">
-
-        <li>
-          <p class="h3">Opening Hours</p>
-        </li>
-
-        <li>
-          <p class="p">Monday – Saturday</p>
-
-          <span class="span">12.00 – 14.45</span>
-        </li>
-
-        <li>
-          <p class="p">Sunday – Thursday</p>
-
-          <span class="span">17.30 – 00.00</span>
-        </li>
-
-        <li>
-          <p class="p">Friday – Saturday</p>
-
-          <span class="span">12.00 – 14.45</span>
-        </li>
-
-      </ul>
-
-      <ul class="footer-list">
-
-        <li>
-          <p class="h3">Contact Info</p>
-        </li>
-
-        <li>
-          <a href="tel:+01234567890" class="footer-link">
-            <span class="material-symbols-rounded">call</span>
-
-            <span class="span">+447704591503</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="mailto:info@autofix.com" class="footer-link">
-            <span class="material-symbols-rounded">mail</span>
-
-            <span class="span">automotivehistorychecks@gmail.com
-          </a>
-        </li>
-
-        <li>
-          <address class="footer-link address">
-            <span class="material-symbols-rounded">location_on</span>
-
-            <span class="span">Riverside Building, County Hall, London SE1 7PB, United Kingdom</span>
-          </address>
-        </li>
-
-      </ul>
-
-    </div>
-
-    <img src="./assets/images/footer-shape-3.png" width="637" height="173" loading="lazy" alt="Shape"
-      class="shape shape-3 move-anim">
-
+<footer class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white mt-[-40px] py-16 font-raleway overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl"></div>
   </div>
 
-  <div class="footer-bottom">
-    <div class="container">
+  <div class="container mx-auto px-4 lg:px-16 relative z-10">
+      <!-- Grid Layout -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+          <!-- Contact Info Section -->
+          <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+              <div class="inline-block">
+                  <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                      Contact Us
+                  </h3>
+                  <div class="h-1 w-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"></div>
+              </div>
+              
+              <div class="space-y-4">
+                  <div class="flex items-center space-x-3 group">
+                      <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                          <i class="fas fa-envelope text-blue-400"></i>
+                      </div>
+                      <a href="mailto:automotivehistorychecks@gmail.com" class="text-sm font-medium hover:text-blue-400 transition-colors">
+                          automotivehistorychecks@gmail.com
+                      </a>
+                  </div>
 
-      <p class="copyright">Copyright 2022, codewithanees All Rights Reserved.</p>
+                  <div class="flex items-center space-x-3 group">
+                      <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                          <i class="fas fa-map-marker-alt text-blue-400"></i>
+                      </div>
+                      <p class="text-sm font-medium text-gray-300">
+                          Riverside Building, County Hall, London SE1 7PB, United Kingdom
+                      </p>
+                  </div>
 
-      <img src="./assets/images/footer-shape-2.png" width="778" height="335" loading="lazy" alt="Shape"
-        class="shape shape-2">
+                  <div class="flex items-center space-x-3 group">
+                      <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                          <i class="fas fa-phone-alt text-blue-400"></i>
+                      </div>
+                      <a href="tel:+447704591503" class="text-sm font-medium hover:text-blue-400 transition-colors">
+                          +447704591503
+                      </a>
+                  </div>
+              </div>
+          </div>
 
-      <img src="./assets/images/footer-shape-1.png" width="877" height="178" loading="lazy" alt="Red Car"
-        class="shape shape-1 move-anim">
+          <!-- Get Updates Section -->
+          <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+              <div class="inline-block">
+                  <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+                      Get The Updates
+                  </h3>
+                  <div class="h-1 w-20 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full"></div>
+              </div>
 
-    </div>
+              <form class="space-y-4">
+                  <div class="relative group">
+                      <input
+                          type="email"
+                          placeholder="Type your Email"
+                          class="w-full p-4 bg-gray-800/50 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all border border-gray-700 group-hover:border-purple-500"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                  </div>
+                  <button class="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 px-6 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 font-medium">
+                      Subscribe Now
+                  </button>
+                  <p class="text-gray-400 text-sm font-medium flex items-center">
+                      <i class="fas fa-shield-alt mr-2 text-purple-400"></i>
+                      We only send interesting and relevant emails.
+                  </p>
+              </form>
+          </div>
+
+          <!-- Explore Section -->
+          <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+              <div class="inline-block">
+                  <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+                      Explore On
+                  </h3>
+                  <div class="h-1 w-20 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
+              </div>
+
+              <ul class="space-y-3 text-sm font-medium">
+                  <li class="transform hover:translate-x-2 transition-transform">
+                      <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                          <i class="fas fa-chevron-right text-emerald-400"></i>
+                          <span>Home</span>
+                      </a>
+                  </li>
+                  <li class="transform hover:translate-x-2 transition-transform">
+                      <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                          <i class="fas fa-chevron-right text-emerald-400"></i>
+                          <span>Contact us</span>
+                      </a>
+                  </li>
+                  <li class="transform hover:translate-x-2 transition-transform">
+                      <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                          <i class="fas fa-chevron-right text-emerald-400"></i>
+                          <span>Our Pricing</span>
+                      </a>
+                  </li>
+                  <li class="transform hover:translate-x-2 transition-transform">
+                      <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                          <i class="fas fa-chevron-right text-emerald-400"></i>
+                          <span>Our Vision</span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Footer Bottom Section -->
+      <div class="border-t border-gray-800 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+              <!-- Social Media Links -->
+              <div class="flex space-x-6 mb-6 md:mb-0">
+                  <a href="#" class="social-icon-wrapper">
+                      <div class="social-icon">
+                          <i class="fab fa-facebook-f"></i>
+                      </div>
+                  </a>
+                  <a href="#" class="social-icon-wrapper">
+                      <div class="social-icon">
+                          <i class="fab fa-twitter"></i>
+                      </div>
+                  </a>
+                  <a href="#" class="social-icon-wrapper">
+                      <div class="social-icon">
+                          <i class="fab fa-pinterest-p"></i>
+                      </div>
+                  </a>
+                  <a href="#" class="social-icon-wrapper">
+                      <div class="social-icon">
+                          <i class="fab fa-instagram"></i>
+                      </div>
+                  </a>
+                  <a href="#" class="social-icon-wrapper">
+                      <div class="social-icon">
+                          <i class="fab fa-dribbble"></i>
+                      </div>
+                  </a>
+              </div>
+
+              <!-- Copyright Info -->
+              <p class="text-gray-400 text-sm font-medium">
+                  © 2025 Automotive History Checks. All Rights Reserved.
+              </p>
+          </div>
+
+          <!-- Privacy Policy and Terms -->
+          <div class="text-center mt-6 space-x-4">
+              <a href="#" class="inline-block hover:text-blue-400 transition-colors text-sm font-medium relative group">
+                  Privacy Policy
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+              </a>
+              <span class="text-gray-600">|</span>
+              <a href="#" class="inline-block hover:text-blue-400 transition-colors text-sm font-medium relative group">
+                  Terms of Use
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+              </a>
+          </div>
+      </div>
   </div>
-
 </footer>
 
 
 
 
 
-
-  <!-- 
-    - custom js link
-
-  -->
-    
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision"];
+      const navLinksContainer = document.getElementById('nav-links');
+      const sidebarLinksContainer = document.querySelector('#sidebar ul');
+
+      // Populate Navigation Links (Desktop)
+      navLinks.forEach(link => {
+  const linkElement = document.createElement('a');
+  linkElement.textContent = link;
+
+  // Conditional logic for href
+  if (link === "Home") {
+    linkElement.href = "index.html";
+  } else if (link === "Our vision") {
+    linkElement.href = "vision.html";
+  } else {
+    linkElement.href = `${link.toLowerCase().replace(' ', '')}.html`;
+  }
+
+  // Adding classes for styling
+  linkElement.classList.add("hover:text-gray-300", "cursor-pointer", "transition-all", "duration-300", "hover:scale-105");
+  navLinksContainer.appendChild(linkElement);
+});
+
+      // Populate Sidebar Links (Mobile)
+      navLinks.forEach(link => {
+        const linkElement = document.createElement('li');
+        linkElement.innerHTML = `<a href="/${link.toLowerCase().replace(' ', '')}" class="hover:text-gray-300">${link}</a>`;
+        // sidebarLinksContainer.appendChild(linkElement);
+      });
+
+      // Sidebar Toggle
+      const barsIcon = document.getElementById('bars-icon');
+      const sidebar = document.getElementById('sidebar');
+      const closeSidebar = document.getElementById('close-sidebar');
+
+      barsIcon.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+      });
+
+      closeSidebar.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+      });
+    });
+    // document.getElementById('nav-links').innerHTML = `
+    //         <a href="/" class="hover:text-blue-400 transition-colors duration-300">Home</a>
+    //         <a href="/about.html" class="hover:text-blue-400 transition-colors duration-300">About</a>
+    //         <a href="/services.html" class="hover:text-blue-400 transition-colors duration-300">Services</a>
+    //         <a href="/contact.html" class="hover:text-blue-400 transition-colors duration-300">Contact</a>
+    //     `;
+
+        // Populate Mobile Navigation Links
+        document.getElementById('mobile-nav-links').innerHTML = `
+            <a href="/" class="block text-gray-400 hover:text-white transition-colors duration-300">Home</a>
+            <a href="/about.html" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
+            <a href="/pricing.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Pricing</a>
+                        <a href="/vision.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Our Vision</a>
+
+            <a href="/contact.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
+        `;
+
+        // Toggle Mobile Menu
+        document.getElementById('bars-icon').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
   </script>
-  <script src="./assets/js/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.5.2/jquery-migrate.min.js"
-    integrity="sha512-BzvgYEoHXuphX+g7B/laemJGYFdrq4fTKEo+B3PurSxstMZtwu28FHkPKXu6dSBCzbUWqz/rMv755nUwhjQypw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-    integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
 </body>
 
 </html>
-

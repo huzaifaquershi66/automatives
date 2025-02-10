@@ -1,323 +1,654 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
-		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Automotive History Checks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Add Remixicon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Add AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Autofix - Auto Maintenance & Repair Service</title>
-  <meta name="title" content="Autofix - Auto Maintenance & Repair Service">
-  <meta name="description" content="This is a vehicle repair html template made by codewithsadee">
+    <style>
+        /* Enhanced Animations and Effects */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+        .animated-gradient {
+            background: linear-gradient(-45deg, #1e40af, #3b82f6, #0284c7, #0ea5e9);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Mulish&display=swap"
-    rel="stylesheet">
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.4s ease;
+        }
 
-  <!-- 
-    - material icon font
-  -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,600,0,0" />
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+        .input-effect {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
-  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+        .input-effect:focus {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
 
+        .social-icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover:before {
+            opacity: 1;
+        }
+
+        .social-icon:hover i {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Effect */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .pulse-effect {
+            animation: pulse 2s infinite;
+        }
+
+        /* Success Message Animation */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .slide-down {
+            animation: slideDown 0.5s ease-out forwards;
+        }
+        .nav-gradient {
+            background: linear-gradient(90deg, #1a1d20 0%, #212529 100%);
+        }
+    </style>
 </head>
-
-<body>
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header">
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="280" height="200" alt="autofix home">
-      </a>
-      
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-
-          <li>
-            <a href="index.html" class="navbar-link">Home</a>
-          </li>
-
-          <li>
-            <a href="about.html" class="navbar-link">About</a>
-          </li>
-
-          <li>
-            <a href="pricing.html" class="navbar-link">Pricing</a>
-          </li>
-
-          <li>
-            <a href="contact.html" class="navbar-link">Contact</a>
-          </li>
-          <li><a href="vision.html" class="navbar-link">Our Vision</a></li>
-
-
-        </ul>
-      </nav>
-
-      <a href="#" class="btn btn-primary">
-        <span class="span">Get a Quote</span>
-
-        <span class="material-symbols-rounded">arrow_forward</span>
-      </a>
-
-      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
-        <span class="nav-toggle-icon icon-1"></span>
-        <span class="nav-toggle-icon icon-2"></span>
-        <span class="nav-toggle-icon icon-3"></span>
-      </button>
-
-    </div>
-  </header>
-
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <section class="hero has-bg-image" aria-label="home" style="background-image: url('./assets/images/hero-bg.jpg'); ">
-        <div class="contact-wrap " style="margin-top: 50px;">
-          <div class="contact-in">
-            <h1>Contact Info</h1>
-            <h2><i class="fa fa-phone" aria-hidden="true"></i> Phone</h2>
-            <p>+447704591503</p>
-            <h2><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</h2>
-            <p><a href="https://wa.me/923341334921" target="_blank">+447704591503</a></p>
-            <h2><i class="fa fa-envelope" aria-hidden="true"></i> Email</h2>
-            <p>automotivehistorychecks@gmail.com</p>
-            <h2><i class="fa fa-map-marker" aria-hidden="true"></i> Address</h2>
-            <p>Riverside Building, County Hall, London SE1 7PB, United Kingdom</p>
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-            </ul>
+<body class="bg-slate-900 text-gray-100 overflow-x-hidden">
+    <!-- Your existing header/navigation code here -->
+    <div class="h-20 fixed top-0 left-0 right-0 z-50 w-full font-sans nav-gradient border-b border-gray-700/30 backdrop-blur-sm shadow-lg">
+      <!-- Logo Section -->
+      <div class="max-w-7xl mx-auto px-4 h-full">
+          <div class="flex items-center justify-between h-full">
+              <div class="flex items-center">
+                  <img src="./assets/images/Add_a_heading__3_-removebg-preview.png"
+                       class="h-32 mt-8 w-auto max-w-full transform hover:scale-105 transition-transform duration-300" 
+                       alt="Logo">
+              </div>
+  
+              <!-- Navigation Links -->
+              <div class="hidden xl:flex items-center space-x-8 text-gray-100 text-[15px] font-medium" id="nav-links">
+                  <!-- Links will be populated by JavaScript -->
+              </div>
+  
+              <!-- Actions Section -->
+              <div class="flex items-center space-x-6">
+                  <!-- Get Quote Button -->
+                  <a href="/pricing.html" class="hidden xl:block">
+                      <button class="px-6 py-2.5 text-[13px] font-semibold text-white uppercase tracking-wider 
+                                   bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg
+                                   hover:from-blue-700 hover:to-blue-800
+                                   transform hover:-translate-y-0.5 transition-all duration-300
+                                   shadow-lg hover:shadow-blue-500/30">
+                          Get Quote
+                      </button>
+                  </a>
+  
+                  <!-- Search Button -->
+                  <div class="hidden xl:flex items-center justify-center w-10 h-10 rounded-lg
+                              bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50
+                              transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer
+                              group">
+                      <i class="fas fa-search text-gray-400 group-hover:text-white text-[16px] transition-colors duration-300"></i>
+                  </div>
+  
+                  <!-- Mobile Menu Button -->
+                  <div id="bars-icon"
+                       class="xl:hidden flex items-center justify-center w-10 h-10 rounded-lg
+                              bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50
+                              transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer
+                              group">
+                      <i class="fas fa-bars text-gray-400 group-hover:text-white text-[16px] transition-colors duration-300"></i>
+                  </div>
+              </div>
           </div>
-          <div class="contact-in">
-            <h1>Send a Message</h1>
-            <form>
-              <input type="text" placeholder="Full Name" class="contact-in-input">
-              <input type="text" placeholder="Email" class="contact-in-input">
-              <input type="text" placeholder="Subject" class="contact-in-input">
-              <textarea placeholder="Query" class="contact-in-textarea"></textarea>
-              <input type="submit" value="SUBMIT" class="contact-in-btn">
-            </form>
-          </div>
-          <div class="contact-in">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242017.3854730749!2d-0.1278!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b1e9bc7a8f5%3A0x1e61f4c87607c199!2sLondon%2C%20United%20Kingdom!5e0!3m2!1sen!2sin!4v1601968196548!5m2!1sen!2sin"
-              width="100%" 
-              height="auto" 
-              frameborder="0" 
-              style="border:0;" 
-              allowfullscreen="" 
-              aria-hidden="false" 
-              tabindex="0">
-            </iframe>
-          </div>
-        </div>
-      </section>
-      
-  
-
-
-
-      <!-- 
-        - #SERVICE
-      -->
-
-
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      
-
-
-      <!-- 
-        - #WORK
-      -->
-
-
-    </article>
-  </main>
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-
-  <footer class="footer">
-
-    <div class="footer-top section">
-      <div class="container">
-  
-        <div class="footer-brand">
-  
-          <a href="#" class="logo">
-            <img src="./assets/images/Add_a_heading__3_-removebg-preview.png" width="128" height="63" alt="autofix home">
-          </a>
-  
-          <p class="footer-text">
-            Unlock the full history of any vehicle with our detailed VIN-based reports. Get verified information on accident history, mileage accuracy, title status, ownership records, and more. With our trusted reports, you can make smarter, more confident decisions—whether you're buying or selling—ensuring peace of mind and protecting your investment
-          </p>
-  
-          <ul class="social-list">
-  
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/facebook.svg" alt="facebook">
-              </a>
-            </li>
-  
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/instagram.svg" alt="instagram">
-              </a>
-            </li>
-  
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/twitter.svg" alt="twitter">
-              </a>
-            </li>
-  
-          </ul>
-  
-        </div>
-  
-        <ul class="footer-list">
-  
-          <li>
-            <p class="h3">Opening Hours</p>
-          </li>
-  
-          <li>
-            <p class="p">Monday – Saturday</p>
-  
-            <span class="span">12.00 – 14.45</span>
-          </li>
-  
-          <li>
-            <p class="p">Sunday – Thursday</p>
-  
-            <span class="span">17.30 – 00.00</span>
-          </li>
-  
-          <li>
-            <p class="p">Friday – Saturday</p>
-  
-            <span class="span">12.00 – 14.45</span>
-          </li>
-  
-        </ul>
-  
-        <ul class="footer-list">
-  
-          <li>
-            <p class="h3">Contact Info</p>
-          </li>
-  
-          <li>
-            <a href="tel:+01234567890" class="footer-link">
-              <span class="material-symbols-rounded">call</span>
-  
-              <span class="span">+447704591503</span>
-            </a>
-          </li>
-  
-          <li>
-            <a href="mailto:info@autofix.com" class="footer-link">
-              <span class="material-symbols-rounded">mail</span>
-  
-              <span class="span">automotivehistorychecks@gmail.com
-            </a>
-          </li>
-  
-          <li>
-            <address class="footer-link address">
-              <span class="material-symbols-rounded">location_on</span>
-  
-              <span class="span">Riverside Building, County Hall, London SE1 7PB, United Kingdom</span>
-            </address>
-          </li>
-  
-        </ul>
-  
       </div>
+  </div>
   
-      <img src="./assets/images/footer-shape-3.png" width="637" height="173" loading="lazy" alt="Shape"
-        class="shape shape-3 move-anim">
-  
-    </div>
-  
-    <div class="footer-bottom">
-      <div class="container">
-  
-        <p class="copyright">Copyright 2022, codewithanees All Rights Reserved.</p>
-  
-        <img src="./assets/images/footer-shape-2.png" width="778" height="335" loading="lazy" alt="Shape"
-          class="shape shape-2">
-  
-        <img src="./assets/images/footer-shape-1.png" width="877" height="178" loading="lazy" alt="Red Car"
-          class="shape shape-1 move-anim">
-  
+  <!-- Mobile Menu Overlay (Add this if you haven't already) -->
+  <div id="mobile-menu" 
+       class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden"
+       onclick="this.classList.add('hidden')">
+      <div class="fixed right-0 top-0 h-full w-[280px] bg-[#1a1d20] shadow-2xl"
+           onclick="event.stopPropagation()">
+          <div class="p-5">
+              <div class="flex justify-end">
+                  <button class="p-2 text-gray-400 hover:text-white"
+                          onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                      <i class="fas fa-times text-xl"></i>
+                  </button>
+              </div>
+              <div class="mt-5 space-y-4" id="mobile-nav-links">
+                  <!-- Mobile links will be populated by JavaScript -->
+              </div>
+              <div class="mt-8">
+                  <a href="/pricing.html">
+                      <button class="w-full px-6 py-3 text-[13px] font-semibold text-white uppercase tracking-wider 
+                                   bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg
+                                   hover:from-blue-700 hover:to-blue-800 transition-all duration-300
+                                   shadow-lg hover:shadow-blue-500/30">
+                          Get Quote
+                      </button>
+                  </a>
+              </div>
+          </div>
       </div>
+  </div>
+  
+
+    <!-- Hero Section with Animated Background -->
+   
+
+<div class="min-h-[400px] relative overflow-hidden flex items-center justify-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+             alt="Luxury car background"
+             class="w-full h-full object-cover object-center"
+        >
     </div>
-  
-  </footer>
-  
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-black/80 to-blue-900/90"></div>
+    
+    <!-- Moving Gradient Animation -->
+    <div class="absolute inset-0 animated-gradient opacity-40"></div>
+    
+    <!-- Content -->
+    <div class="container mx-auto px-4 relative z-10 text-center" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            Contact Our Team
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto drop-shadow-lg">
+            Get in touch with our expert team for comprehensive vehicle history checks and automotive insights
+        </p>
+    </div>
+
+    <!-- Optional: Animated Particles -->
+    <div class="absolute inset-0 z-[1]">
+        <div class="absolute w-4 h-4 bg-blue-500 rounded-full animate-ping" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="absolute w-3 h-3 bg-blue-400 rounded-full animate-ping" style="top: 60%; left: 20%; animation-delay: 0.5s;"></div>
+        <div class="absolute w-2 h-2 bg-blue-300 rounded-full animate-ping" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
+    </div>
+</div>
 
 
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form Section -->
+            <div class="glass-card rounded-2xl p-8" data-aos="fade-right">
+                <h2 class="text-2xl font-bold mb-8 flex items-center">
+                    <i class="ri-message-3-line text-blue-500 mr-3"></i>
+                    Send Us a Message
+                </h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Full Name</label>
+                            <input type="text" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
+                                   placeholder="Enter your full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email Address</label>
+                            <input type="email" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
+                                   placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Vehicle VIN (Optional)</label>
+                            <input type="text" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
+                                   placeholder="Enter vehicle VIN number">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea class="w-full input-effect rounded-lg px-4 py-3 text-gray-100 h-32" 
+                                      placeholder="How can we help you?"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 
+                                   text-white font-bold py-3 rounded-lg transition-all duration-300 transform hover:scale-[1.02]">
+                        Send Message
+                    </button>
+                </form>
+            </div>
 
+            <!-- Contact Information Section -->
+            <div class="space-y-8">
+                <!-- Quick Contact Card -->
+                <div class="glass-card rounded-2xl p-8" data-aos="fade-left">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="ri-customer-service-line text-blue-500 mr-3"></i>
+                        Quick Contact
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
+                                      group-hover:bg-blue-500/20 transition-all duration-300">
+                                <i class="ri-phone-line text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Call Us</p>
+                                <a href="tel:+447704591503" class="text-lg font-medium hover:text-blue-500 transition-colors">
+                                    +447704591503
+                                </a>
+                            </div>
+                        </div>
 
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
+                                      group-hover:bg-blue-500/20 transition-all duration-300">
+                                <i class="ri-mail-line text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Email Us</p>
+                                <a href="mailto:automotivehistorychecks@gmail.com" 
+                                   class="text-lg font-medium hover:text-blue-500 transition-colors">
+                                    automotivehistorychecks@gmail.com
+                                </a>
+                            </div>
+                        </div>
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
+                                      group-hover:bg-blue-500/20 transition-all duration-300">
+                                <i class="ri-map-pin-line text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Visit Us</p>
+                                <p class="text-lg font-medium">
+                                    Riverside Building, County Hall,<br>
+                                    London SE1 7PB, United Kingdom
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Map Section -->
+                <div class="glass-card rounded-2xl p-8" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="ri-map-2-line text-blue-500 mr-3"></i>
+                        Find Us
+                    </h2>
+                    <div class="rounded-xl overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.690883007619!2d-0.1205440484688974!3d51.50097397963454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2sCounty%20Hall!5e0!3m2!1sen!2suk!4v1644317121560!5m2!1sen!2suk"
+                            class="w-full h-[300px]" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white mt-[-40px] py-16 font-raleway overflow-hidden">
+      <!-- Decorative Elements -->
+      <div class="absolute inset-0">
+          <div class="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+          <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl"></div>
+      </div>
+    
+      <div class="container mx-auto px-4 lg:px-16 relative z-10">
+          <!-- Grid Layout -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+              <!-- Contact Info Section -->
+              <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="inline-block">
+                      <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                          Contact Us
+                      </h3>
+                      <div class="h-1 w-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"></div>
+                  </div>
+                  
+                  <div class="space-y-4">
+                      <div class="flex items-center space-x-3 group">
+                          <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                              <i class="fas fa-envelope text-blue-400"></i>
+                          </div>
+                          <a href="mailto:automotivehistorychecks@gmail.com" class="text-sm font-medium hover:text-blue-400 transition-colors">
+                              automotivehistorychecks@gmail.com
+                          </a>
+                      </div>
+    
+                      <div class="flex items-center space-x-3 group">
+                          <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                              <i class="fas fa-map-marker-alt text-blue-400"></i>
+                          </div>
+                          <p class="text-sm font-medium text-gray-300">
+                              Riverside Building, County Hall, London SE1 7PB, United Kingdom
+                          </p>
+                      </div>
+    
+                      <div class="flex items-center space-x-3 group">
+                          <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                              <i class="fas fa-phone-alt text-blue-400"></i>
+                          </div>
+                          <a href="tel:+447704591503" class="text-sm font-medium hover:text-blue-400 transition-colors">
+                              +447704591503
+                          </a>
+                      </div>
+                  </div>
+              </div>
+    
+              <!-- Get Updates Section -->
+              <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="inline-block">
+                      <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+                          Get The Updates
+                      </h3>
+                      <div class="h-1 w-20 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full"></div>
+                  </div>
+    
+                  <form class="space-y-4">
+                      <div class="relative group">
+                          <input
+                              type="email"
+                              placeholder="Type your Email"
+                              class="w-full p-4 bg-gray-800/50 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all border border-gray-700 group-hover:border-purple-500"
+                          />
+                          <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                      </div>
+                      <button class="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 px-6 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 font-medium">
+                          Subscribe Now
+                      </button>
+                      <p class="text-gray-400 text-sm font-medium flex items-center">
+                          <i class="fas fa-shield-alt mr-2 text-purple-400"></i>
+                          We only send interesting and relevant emails.
+                      </p>
+                  </form>
+              </div>
+    
+              <!-- Explore Section -->
+              <div class="space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+                  <div class="inline-block">
+                      <h3 class="text-2xl font-bold mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+                          Explore On
+                      </h3>
+                      <div class="h-1 w-20 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
+                  </div>
+    
+                  <ul class="space-y-3 text-sm font-medium">
+                      <li class="transform hover:translate-x-2 transition-transform">
+                          <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                              <i class="fas fa-chevron-right text-emerald-400"></i>
+                              <span>Home</span>
+                          </a>
+                      </li>
+                      <li class="transform hover:translate-x-2 transition-transform">
+                          <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                              <i class="fas fa-chevron-right text-emerald-400"></i>
+                              <span>Contact us</span>
+                          </a>
+                      </li>
+                      <li class="transform hover:translate-x-2 transition-transform">
+                          <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                              <i class="fas fa-chevron-right text-emerald-400"></i>
+                              <span>Our Pricing</span>
+                          </a>
+                      </li>
+                      <li class="transform hover:translate-x-2 transition-transform">
+                          <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-emerald-400">
+                              <i class="fas fa-chevron-right text-emerald-400"></i>
+                              <span>Our Vision</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+    
+          <!-- Footer Bottom Section -->
+          <div class="border-t border-gray-800 pt-8">
+              <div class="flex flex-col md:flex-row justify-between items-center">
+                  <!-- Social Media Links -->
+                  <div class="flex space-x-6 mb-6 md:mb-0">
+                      <a href="#" class="social-icon-wrapper">
+                          <div class="social-icon">
+                              <i class="fab fa-facebook-f"></i>
+                          </div>
+                      </a>
+                      <a href="#" class="social-icon-wrapper">
+                          <div class="social-icon">
+                              <i class="fab fa-twitter"></i>
+                          </div>
+                      </a>
+                      <a href="#" class="social-icon-wrapper">
+                          <div class="social-icon">
+                              <i class="fab fa-pinterest-p"></i>
+                          </div>
+                      </a>
+                      <a href="#" class="social-icon-wrapper">
+                          <div class="social-icon">
+                              <i class="fab fa-instagram"></i>
+                          </div>
+                      </a>
+                      <a href="#" class="social-icon-wrapper">
+                          <div class="social-icon">
+                              <i class="fab fa-dribbble"></i>
+                          </div>
+                      </a>
+                  </div>
+    
+                  <!-- Copyright Info -->
+                  <p class="text-gray-400 text-sm font-medium">
+                      © 2025 Automotive History Checks. All Rights Reserved.
+                  </p>
+              </div>
+    
+              <!-- Privacy Policy and Terms -->
+              <div class="text-center mt-6 space-x-4">
+                  <a href="#" class="inline-block hover:text-blue-400 transition-colors text-sm font-medium relative group">
+                      Privacy Policy
+                      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                  </a>
+                  <span class="text-gray-600">|</span>
+                  <a href="#" class="inline-block hover:text-blue-400 transition-colors text-sm font-medium relative group">
+                      Terms of Use
+                      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </footer>
+    <!-- Success Message Toast -->
+    <div id="successMessage" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-check-circle"></i>
+            <span>Message sent successfully!</span>
+        </div>
+    </div>
+
+    <!-- Your existing footer code here -->
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('slide-down');
+            
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+                successMessage.classList.remove('slide-down');
+            }, 3000);
+
+            this.reset();
+        });
+
+        // Add floating animation to icons
+        document.querySelectorAll('.ri-customer-service-line, .ri-mail-line, .ri-map-pin-line').forEach(icon => {
+            icon.classList.add('float-animation');
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision"];
+      const navLinksContainer = document.getElementById('nav-links');
+      const sidebarLinksContainer = document.querySelector('#sidebar ul');
+
+      // Populate Navigation Links (Desktop)
+      navLinks.forEach(link => {
+  const linkElement = document.createElement('a');
+  linkElement.textContent = link;
+
+  // Conditional logic for href
+  if (link === "Home") {
+    linkElement.href = "index.html";
+  } else if (link === "Our vision") {
+    linkElement.href = "vision.html";
+  } else {
+    linkElement.href = `${link.toLowerCase().replace(' ', '')}.html`;
+  }
+
+  // Adding classes for styling
+  linkElement.classList.add("hover:text-gray-300", "cursor-pointer", "transition-all", "duration-300", "hover:scale-105");
+  navLinksContainer.appendChild(linkElement);
+});
+
+      // Populate Sidebar Links (Mobile)
+      navLinks.forEach(link => {
+        const linkElement = document.createElement('li');
+        linkElement.innerHTML = `<a href="/${link.toLowerCase().replace(' ', '')}" class="hover:text-gray-300">${link}</a>`;
+        // sidebarLinksContainer.appendChild(linkElement);
+      });
+
+      // Sidebar Toggle
+      const barsIcon = document.getElementById('bars-icon');
+      const sidebar = document.getElementById('sidebar');
+      const closeSidebar = document.getElementById('close-sidebar');
+
+      barsIcon.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+      });
+
+      closeSidebar.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+      });
+    });
+    // document.getElementById('nav-links').innerHTML = `
+    //         <a href="/" class="hover:text-blue-400 transition-colors duration-300">Home</a>
+    //         <a href="/about.html" class="hover:text-blue-400 transition-colors duration-300">About</a>
+    //         <a href="/services.html" class="hover:text-blue-400 transition-colors duration-300">Services</a>
+    //         <a href="/contact.html" class="hover:text-blue-400 transition-colors duration-300">Contact</a>
+    //     `;
+
+        // Populate Mobile Navigation Links
+        document.getElementById('mobile-nav-links').innerHTML = `
+            <a href="/" class="block text-gray-400 hover:text-white transition-colors duration-300">Home</a>
+            <a href="/about.html" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
+            <a href="/pricing.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Pricing</a>
+                        <a href="/vision.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Our Vision</a>
+
+            <a href="/contact.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
+        `;
+
+        // Toggle Mobile Menu
+        document.getElementById('bars-icon').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
-
-</html> 
+</html>

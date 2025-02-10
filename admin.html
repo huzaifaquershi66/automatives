@@ -10,36 +10,38 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background: #f9f9f9;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      color: #fff;
     }
-
+  
     .admin-panel, .login-container {
       width: 90%;
       max-width: 800px;
-      background-color: #fff;
+      background: linear-gradient(135deg, #ffffff, #f7f8fc);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       padding: 30px;
       text-align: center;
       display: none;
+      color: #333;
     }
-
+  
     .admin-panel.active, .login-container.active {
       display: block;
     }
-
+  
     h2 {
-      font-size: 24px;
-      color: #333;
+      font-size: 28px;
+      color: #6a11cb;
       margin-bottom: 20px;
     }
-
+  
     .login-container input {
       width: 90%;
       padding: 12px;
@@ -47,30 +49,32 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 16px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-
+  
     .login-container button {
       width: 90%;
       padding: 12px;
-      background-color: #8e44ad;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
-
+  
     .login-container button:hover {
-      background-color: #732d91;
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      transform: translateY(-2px);
     }
-
+  
     .error {
-      color: red;
+      color: #ff5252;
       font-size: 14px;
       margin-top: 10px;
     }
-
+  
     .panel-header {
       display: flex;
       justify-content: space-between;
@@ -79,7 +83,7 @@
       padding-bottom: 20px;
       margin-bottom: 30px;
     }
-
+  
     .search-bar input {
       width: 100%;
       max-width: 300px;
@@ -87,53 +91,89 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 16px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-
+  
     .order-table {
       width: 100%;
       border-collapse: collapse;
     }
-
+  
     .order-table th, .order-table td {
       padding: 15px;
       text-align: left;
       border: 1px solid #ddd;
       font-size: 16px;
     }
-
+  
     .order-table th {
-      background-color: #8e44ad;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
     }
-
+  
     .order-table td {
       background-color: #f8f8f8;
     }
-
+  
     .order-table tr:hover {
       background-color: #f1f1f1;
     }
-
+  
     .order-status {
       font-weight: bold;
-      color: #8e44ad;
+      color: #6a11cb;
     }
-
+  
+    .order-details {
+      display: none;
+      padding: 10px;
+      background-color: #f9f9f9;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+  
     /* Responsive Design */
     @media (max-width: 768px) {
       h2 {
-        font-size: 20px;
+        font-size: 24px;
       }
-
+  
       .search-bar input {
         width: 100%;
       }
-
+  
       .order-table th, .order-table td {
         font-size: 14px;
       }
     }
+    .customer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.customer-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.customer-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.customer-card p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  color: #555;
+}
+
   </style>
+  
 </head>
 
 <body>
@@ -145,102 +185,273 @@
     <p class="error" id="error"></p>
   </div>
 
+ 
+  
+
   <div class="admin-panel">
-    <div class="panel-header">
-      <h2>Client Orders</h2>
-      <div class="search-bar">
-        <input type="text" id="search" placeholder="Search by order ID..." oninput="filterOrders()">
+    <div id="orders-view">
+      <div class="panel-header">
+        <h2>Client Orders</h2>
+        <div class="search-bar">
+          <input type="text" id="search" placeholder="Search by order ID..." oninput="filterOrders()">
+        </div>
+        <button id="export-btn" onclick="exportToExcel()">Export to Excel</button>
+        
+      
+        <!-- <div id="all-data-page">
+          <button id="back-button">Back</button>
+          <div id="customer-container"></div>
+        </div> -->
+      </div>
+
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Vehicle Name</th>
+            <th>VIN Number</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="order-table-body">
+          <!-- Orders will be dynamically added here -->
+        </tbody>
+      </table>
+
+      <div id="pagination" style="text-align: center; margin-top: 20px;">
+        <!-- Pagination buttons will be generated here -->
       </div>
     </div>
+    
+    <div id="customer-container" class="customer-container">
+      <!-- Customers will be dynamically added here -->
+    </div>
+    <div id="paginationf" style="text-align: center; margin-top: 20px;">
+      <!-- Pagination buttons will be generated here -->
+    </div>
 
-    <table class="order-table">
-      <thead>
-        <tr>
-          <th>Order ID</th>
-          <th>Email</th>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="order-table-body">
-        <!-- Orders will be dynamically added here -->
-      </tbody>
-    </table>
-
-    <div class="billing-info">
-      <h3>Billing Information</h3>
-      <p><strong>First Name:</strong> <span id="first-name">-</span></p>
-      <p><strong>Last Name:</strong> <span id="last-name">-</span></p>
-      <p><strong>VIN Number:</strong> <span id="vin-number">-</span></p>
-      <p><strong>Vehicle Name:</strong> <span id="vehicle-name">-</span></p>
-      <p><strong>Email:</strong> <span id="billing-email">-</span></p>
-      <p><strong>Country:</strong> <span id="country">-</span></p>
-      <p><strong>State:</strong> <span id="state">-</span></p>
-      <p><strong>Town/City:</strong> <span id="town">-</span></p>
+    <div id="order-details-view" style="display: none;">
+      <h2>Order Details</h2>
+      <table class="order-table">
+        <tbody id="order-details-table">
+          <!-- Order details will be dynamically added here -->
+        </tbody>
+      </table>
+      <button onclick="backToOrders()">Back to Orders</button>
     </div>
   </div>
 
   <script>
-    // Fetch saved billing information and product data from localStorage
-    const billingInfo = JSON.parse(localStorage.getItem('billingInfo')) || {};
-    const productData = JSON.parse(localStorage.getItem('cart')) || [];
-    const orderTableBody = document.getElementById('order-table-body');
-
-    // Populate orders in the table
-    if (productData.length > 0) {
-      productData.forEach((product, index) => {
-        const row = document.createElement('tr');
-        const orderId = `ORD${index + 1}`; // Incremental Order ID
-        const totalPrice = product.packagePrice * product.quantity;
-
-        row.innerHTML = `
-          <td>${orderId}</td>
-          <td>${billingInfo['email'] || '-'}</td>
-          <td>${product.packageName}</td>
-          <td>${product.quantity}</td>
-          <td>$${totalPrice.toFixed(2)}</td>
-          <td><span class="order-status">Pending</span></td>
-        `;
-
-        orderTableBody.appendChild(row);
-      });
-    }
-
-    // Populate billing information
-    document.getElementById('first-name').textContent = billingInfo['first-name'] || '-';
-    document.getElementById('last-name').textContent = billingInfo['last-name'] || '-';
-    document.getElementById('vin-number').textContent = billingInfo['vin-number'] || '-';
-    document.getElementById('vehicle-name').textContent = billingInfo['vehicle-name'] || '-';
-    document.getElementById('billing-email').textContent = billingInfo['email'] || '-';
-    document.getElementById('country').textContent = billingInfo['country'] || '-';
-    document.getElementById('state').textContent = billingInfo['state'] || '-';
-    document.getElementById('town').textContent = billingInfo['town'] || '-';
-
-    // Admin login logic
-    function login() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const error = document.getElementById('error');
-
-      if (username === 'hamdan' && password === 'hamdan123') {
-        document.querySelector('.login-container').classList.remove('active');
-        document.querySelector('.admin-panel').classList.add('active');
-      } else {
-        error.textContent = 'Invalid username or password!';
+    const ordersPerPage = 5;
+    let currentPage = 1;
+    let ordersData = [];
+    const spreadsheetId = '1bZTjhf1fVCjmwyQR_5dzIvbGFOTPD06EcQkij97vyY0'; // Replace with your spreadsheet ID
+    const apiKey = 'AIzaSyD7xCzvNL1O2pAluROrKoVOXgtQwlvPDY8'; // Replace with your Google Sheets API Key
+  
+    async function fetchOrders() {
+      try {
+        const response = await fetch('https://newweb-production-2f78.up.railway.app/orders');
+        const data = await response.json();
+  
+        if (data && data.orders) {
+          ordersData = data.orders; // Store the data globally
+          renderOrders();
+          await saveOrdersToGoogleSheet(data.orders); // Save orders to Google Sheet
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
       }
     }
-
-    // Filter orders based on input
-    function filterOrders() {
-      const searchValue = document.getElementById('search').value.toLowerCase();
-      const rows = orderTableBody.getElementsByTagName('tr');
-      Array.from(rows).forEach(row => {
-        const orderId = row.getElementsByTagName('td')[0].textContent.toLowerCase();
-        row.style.display = orderId.includes(searchValue) ? '' : 'none';
-      });
+  
+    async function saveOrdersToGoogleSheet(orders) {
+      try {
+        const values = orders.map(order => [
+          order.vinNumber || '-',
+          order.firstName || '-',
+          order.lastName || '-',
+          order.vehicleName || '-',
+          order.paymentStatus || '-',
+          `$${order.products.reduce((total, product) => total + (product.packagePrice * product.quantity), 0).toFixed(2) || '-'}`
+        ]);
+  
+        const requestBody = {
+          range: 'Sheet1!A1:F1',
+          majorDimension: 'ROWS',
+          values: [['VIN Number', 'First Name', 'Last Name', 'Vehicle Name', 'Status', 'Total Price'], ...values],
+        };
+  
+        const response = await fetch(
+          `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Sheet1!A1:F1:append?valueInputOption=USER_ENTERED&key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody),
+          }
+        );
+  
+        if (response.ok) {
+          console.log('Orders saved to Google Sheet successfully!');
+        } else {
+          console.error('Failed to save orders to Google Sheet', await response.text());
+        }
+      } catch (error) {
+        console.error('Error saving orders to Google Sheet:', error);
+      }
     }
+  
+    function renderOrders() {
+      const orderTableBody = document.getElementById('order-table-body');
+      orderTableBody.innerHTML = '';
+  
+      const startIndex = (currentPage - 1) * ordersPerPage;
+      const endIndex = startIndex + ordersPerPage;
+  
+      const currentOrders = ordersData.slice(startIndex, endIndex);
+  
+      currentOrders.forEach(order => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td onclick="showOrderDetails('${order.vinNumber}')">${order.vinNumber || '-'}</td>
+          <td>${order.firstName || '-'}</td>
+          <td>${order.lastName || '-'}</td>
+          <td>${order.vehicleName || '-'}</td>
+          <td>${order.vinNumber || '-'}</td>
+          <td><span class="order-status">${order.paymentStatus || '-'}</span></td>
+        `;
+        orderTableBody.appendChild(row);
+      });
+  
+      renderPagination();
+    }
+  
+    function renderPagination() {
+      const totalPages = Math.ceil(ordersData.length / ordersPerPage);
+      const paginationDiv = document.getElementById('pagination');
+      paginationDiv.innerHTML = '';
+  
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.style.margin = '0 5px';
+        button.style.padding = '5px 10px';
+        button.style.cursor = 'pointer';
+        button.style.backgroundColor = i === currentPage ? '#8e44ad' : '#ddd';
+        button.style.color = i === currentPage ? '#fff' : '#000';
+        button.onclick = () => {
+          currentPage = i;
+          renderOrders();
+        };
+        paginationDiv.appendChild(button);
+      }
+    }
+  
+    function showOrderDetails(orderId) {
+      const order = ordersData.find(o => o.vinNumber === orderId);
+      if (!order) return;
+  
+      const orderDetailsView = document.getElementById('order-details-view');
+      const ordersView = document.getElementById('orders-view');
+      const orderDetailsTable = document.getElementById('order-details-table');
+  
+      ordersView.style.display = 'none';
+      orderDetailsView.style.display = 'block';
+      customercontainer.style.display = 'none';
+  
+      orderDetailsTable.innerHTML = `
+        <tr><td><strong>Order ID:</strong></td><td>${order.vinNumber || '-'}</td></tr>
+        <tr><td><strong>First Name:</strong></td><td>${order.firstName || '-'}</td></tr>
+        <tr><td><strong>Last Name:</strong></td><td>${order.lastName || '-'}</td></tr>
+        <tr><td><strong>Vehicle Name:</strong></td><td>${order.vehicleName || '-'}</td></tr>
+        <tr><td><strong>VIN Number:</strong></td><td>${order.vinNumber || '-'}</td></tr>
+        <tr><td><strong>Status:</strong></td><td>${order.paymentStatus || '-'}</td></tr>
+        <tr><td><strong>Total Price:</strong></td><td>$${order.products.reduce((total, product) => total + (product.packagePrice * product.quantity), 0).toFixed(2) || '-'}</td></tr>
+      `;
+    }
+  
+    function backToOrders() {
+      const orderDetailsView = document.getElementById('order-details-view');
+      const ordersView = document.getElementById('orders-view');
+  
+      ordersView.style.display = 'block';
+      orderDetailsView.style.display = 'none';
+      customercontainer.style.display = 'block';
+
+     
+    }
+    function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const error = document.getElementById('error');
+
+    if (username === 'hamdan' && password === 'hamdan123') {
+      document.querySelector('.login-container').classList.remove('active');
+      document.querySelector('.admin-panel').classList.add('active');
+    } else {
+      error.textContent = 'Invalid username or password!';
+    }
+  }
+  
+    window.addEventListener('DOMContentLoaded', fetchOrders);
+const customercontainer =document.getElementById('customer-container');
+
+const allOrders = async () => {
+  try {
+    // API endpoint
+    const url = "https://newweb-production-2f78.up.railway.app/get-data?type=datas";
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const { data } = await response.json(); // Extract 'data' array from response
+    const customerContainer = document.getElementById("customer-container");
+
+    // Clear previous data if any
+    customerContainer.innerHTML = "";
+
+    // Calculate pagination
+   
+
+    // Dynamically add customers to the container
+    data.forEach((customer) => {
+      const customerDiv = document.createElement("div");
+      customerDiv.classList.add("customer-card"); // Add a class for styling
+
+      customerDiv.innerHTML = `
+        <p><strong>VIN Number:</strong> ${customer.vinnumber}</p>
+        <p><strong>Email:</strong> ${customer.email}</p>
+      `;
+
+      customerContainer.appendChild(customerDiv); // Append the customer div to the container
+    });
+
+    // Render Pagination
+  
+
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+  }
+};
+
+
+// Initially load the first page of customers
+allOrders();
   </script>
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </body>
+
+
+
 </html>

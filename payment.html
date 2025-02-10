@@ -10,7 +10,7 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background:gray; /* Modern gradient background */
+      background: #2b030a; /* Set background to red */
       background-size: cover;
       margin: 0;
       padding: 0;
@@ -42,7 +42,7 @@
       text-align: center;
       margin-bottom: 30px;
       font-size: 32px;
-      color: #333;
+      color: #2b030a; /* Set h2 color to red */
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -59,13 +59,13 @@
     }
   
     .billing-info h3, .order-info h3, .payment-details h3 {
-      color: #8e44ad;
+      color: #2b030a; /* Set headings to red */
       margin-bottom: 15px;
       font-size: 22px;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: capitalize;
-      border-bottom: 2px solid #8e44ad;
+      border-bottom: 2px solid red; /* Set bottom border to red */
     }
   
     .billing-info input, .payment-details input {
@@ -81,102 +81,22 @@
     }
   
     .billing-info input:focus, .payment-details input:focus {
-      border-color: #8e44ad;
-      box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+      border-color: red; /* Focused input borders turn red */
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Red glow on focus */
       outline: none;
       background-color: #fff;
     }
   
-    .order-info {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 30px;
-  }
-
-  .order-info h3 {
-    color: #8e44ad;
-    margin-bottom: 15px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    border-bottom: 2px solid #8e44ad;
-    padding-bottom: 10px;
-  }
-
-  /* Styling for dynamically displayed order details */
-  #order-summary {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    color: #333;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #order-summary p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-
-  #order-summary .order-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-  }
-
-  #order-summary .order-item:last-child {
-    border-bottom: none;
-  }
-
-  #order-summary .order-item span {
-    font-weight: bold;
-    color: #333;
-  }
-
-  /* Hover effect for the order-info container */
-  .order-info:hover {
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.98);
-  }
-
-  /* Add spacing between the sections */
-  .payment-container {
-    padding: 30px;
-  }
-
-  @media (max-width: 600px) {
-    .order-info h3 {
-      font-size: 18px;
-    }
-
-    #order-summary {
-      padding: 15px;
-    }
-
-    #order-summary p {
-      font-size: 16px;
-    }
-  }
-  
-    .total {
-      font-weight: bold;
-      font-size: 20px;
-      color: #333;
-      text-align: right;
+    /* Hover effect for the order-info container */
+    .order-info:hover {
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.98);
     }
   
     .submit-btn {
       width: 100%;
       padding: 16px;
-      background-color: #8e44ad;
+      background-color: #2b030a; /* Set submit button background to red */
       color: white;
       border: none;
       border-radius: 8px;
@@ -187,15 +107,32 @@
     }
   
     .submit-btn:hover {
-      background-color: #732d91;
+      background-color: darkred; /* Darker red on hover */
       transform: scale(1.05);
     }
   
     .submit-btn:active {
-      background-color: #5c1f6e;
+      background-color: #8B0000; /* Even darker red when clicked */
       transform: scale(1);
     }
   
+    /* Subtle animation for container */
+    .payment-container {
+      animation: fadeIn 0.6s ease-out;
+    }
+  
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    /* Responsive design for smaller screens */
     @media (max-width: 600px) {
       .payment-container {
         padding: 20px;
@@ -218,214 +155,26 @@
         font-size: 14px;
       }
     }
-  
-    /* Add spacing between input fields for better alignment */
-    .payment-container .billing-info input,
-    .payment-container .payment-details input {
-      margin-bottom: 15px;
+    .order-info{
+      color: #8B0000;
     }
-  
-    /* Subtle animation for container */
-    .payment-container {
-      animation: fadeIn 0.6s ease-out;
-    }
-    .billing-info {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 30px;
-  }
+</style>
 
-  .billing-info h3 {
-    color: #8e44ad;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    border-bottom: 2px solid #8e44ad;
-    padding-bottom: 10px;
-  }
-
-  .billing-info form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .billing-info input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #f8f8f8;
-    transition: all 0.3s ease;
-  }
-
-  .billing-info input:focus {
-    border-color: #8e44ad;
-    box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
-    outline: none;
-    background-color: #fff;
-  }
-
-  /* Add a hover effect for inputs */
-  .billing-info input:hover {
-    border-color: #8e44ad;
-    background-color: #f1f1f1;
-  }
-
-  /* Add a little effect when focus on input fields */
-  .billing-info input:focus::placeholder {
-    color: #8e44ad;
-    opacity: 0.8;
-  }
-
-  /* Add a slight shadow effect for the whole container on hover */
-  .billing-info:hover {
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.98);
-  }
-
-  /* Media Query for Mobile */
-  @media (max-width: 600px) {
-    .billing-info h3 {
-      font-size: 18px;
-    }
-
-    .billing-info input {
-      font-size: 14px;
-      padding: 12px;
-    }
-  }
-  
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .payment-details {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .payment-details h3 {
-    color: #8e44ad;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    border-bottom: 2px solid #8e44ad;
-    padding-bottom: 10px;
-  }
-
-  .card-logos {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-
-  .card-logos img {
-    width: 40px; /* Adjust size of card logos */
-    height: auto;
-  }
-
-  .payment-details input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #f8f8f8;
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
-  }
-
-  .payment-details input:focus {
-    border-color: #8e44ad;
-    box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
-    outline: none;
-    background-color: #fff;
-  }
-
-  /* Hover effect on inputs */
-  .payment-details input:hover {
-    border-color: #8e44ad;
-    background-color: #f1f1f1;
-  }
-
-  /* Add effect when focus on input fields */
-  .payment-details input:focus::placeholder {
-    color: #8e44ad;
-    opacity: 0.8;
-  }
-
-  /* Hover effect for the entire container */
-  .payment-details:hover {
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.98);
-  }
-
-  /* Responsive design for smaller screens */
-  @media (max-width: 600px) {
-    .payment-details h3 {
-      font-size: 18px;
-    }
-
-    .payment-details input {
-      font-size: 14px;
-      padding: 12px;
-    }
-
-    .card-logo {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .card-logo img {
-    width: 300px; /* Larger logo size */
-    height: auto;
-    display: flex;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-
-  .card-logo img:hover {
-    transform: scale(1.1); /* Logo zoom effect on hover */
-  }
-  }
-
-
-  </style>
   
 </head>
 
 <body>
-
   <div class="payment-container">
     <h2>Checkout</h2>
 
     <!-- Billing Information -->
     <div class="billing-info">
       <h3>Billing Address</h3>
-      <form action="submit_payment.html" method="POST">
-        <input type="text" name="first-name" placeholder="First Name" required>
-        <input type="text" name="last-name" placeholder="Last Name" required>
-        <input type="text" name="vin-number" placeholder="VIN Number" required>
-        <input type="text" name="vehicle-name" placeholder="Vehicle-Name" required>
+      <form id="billing-form" action="#" method="POST">
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" placeholder="Last Name" required>
+        <input type="text" name="vinNumber" placeholder="VIN Number" required>
+        <input type="text" name="vehicleName" placeholder="Vehicle-Name" required>
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="text" name="country" placeholder="Country" required>
         <input type="text" name="state" placeholder="State" required>
@@ -435,50 +184,49 @@
 
     <!-- Order Details -->
     <div class="order-info">
-        <h3>Order Details</h3>
-        <div id="order-summary"></div> <!-- Order details displayed dynamically here -->
+      <h3>Order Details</h3>
+      <div id="order-summary"></div> <!-- Order details dynamically displayed here -->
     </div>
-
-    <!-- Payment Details -->
-    <div class="payment-details">
-        <h3>Card Information</h3>
-        <div class="card-logo">
-          <!-- Display only one logo -->
-          <img src="https://seeklogo.com/images/C/credit-card-icons-logo-9CC8F1BFCD-seeklogo.com.png" alt="Card Logo">
-        </div>
-        <input type="text" name="card-number" placeholder="Card Number" required>
-        <input type="month" name="expiration" placeholder="Expiration Date (MM/YY)" required>
-        <input type="text" name="cvc" placeholder="CVC" required>
-      </div>
-      
-      
 
     <!-- PayPal Integration -->
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="adilsiddiqui2109@gmail.com">
+      <input type="hidden" name="business" value="info.createmax@gmail.com">
       <input type="hidden" name="item_name" value="Products Order">
-      <!-- Update the 'amount' field to dynamically set the value -->
       <input type="hidden" name="amount" id="paypal-amount" value="50">
       <input type="hidden" name="currency_code" value="USD">
-      <input type="hidden" name="return" value="https://automotivehistorychecks.com/thank-you">
+      <input type="hidden" name="return" value="https://automotivehistorychecks.com/thank-you.html">
       <input type="hidden" name="cancel_return" value="https://automotivehistorychecks.com/cancel">
+      <input type="hidden" name="notify_url" value="https://newweb-production-2f78.up.railway.app/payment-notification">
+
       <button type="submit" class="submit-btn">Pay</button>
     </form>
-    
-  </div>
 
+  </div>
   <script>
+    let totalPrice = 0;
+  
+    // Retrieve product data from localStorage (cart)
     const productData = JSON.parse(localStorage.getItem('cart'));
     if (productData && Array.isArray(productData)) {
       let orderSummary = '';
-      let totalPrice = 0;
   
+      // Calculate the total price by adding each product's price * quantity
       productData.forEach(product => {
-        orderSummary += `<p><strong>${product.packageName}</strong>: $${product.packagePrice} x ${product.quantity}</p>`;
-        totalPrice += product.packagePrice * product.quantity;
+        const productPrice = parseFloat(product.packagePrice);
+        const productQuantity = parseInt(product.quantity, 10);
+  
+        if (!isNaN(productPrice) && !isNaN(productQuantity)) {
+          // Add product details to the order summary
+          orderSummary += `<p><strong>${product.packageName}</strong>: $${productPrice} x ${productQuantity}</p>`;
+          // Update total price
+          totalPrice += productPrice * productQuantity;
+        } else {
+          console.warn(`Invalid price or quantity for product: ${product.packageName}`);
+        }
       });
   
+      // Add the total price to the order summary
       orderSummary += `<p class="total">Total: $${totalPrice.toFixed(2)}</p>`;
       document.getElementById('order-summary').innerHTML = orderSummary;
   
@@ -486,63 +234,69 @@
       document.getElementById('paypal-amount').value = totalPrice.toFixed(2);
     }
   
-    emailjs.init("your_user_id"); // Replace with your actual EmailJS user ID
-  
-    function sendEmail() {
-      // Prepare email parameters
-      const emailParams = {
-        to_email: "automotivehistorychecks@gmail.com", // Your admin email
-        order_details: `A payment of $${totalPrice.toFixed(2)} has been made for Products Order.`, // Total price
-        order_summary: document.getElementById('order-summary').innerHTML // Including detailed order summary
-      };
-  
-      emailjs.send("service_ik3jh3s", "template_4gkqf0x", emailParams)
-        .then(function (response) {
-          console.log("Email sent successfully!", response.status, response.text);
-        })
-        .catch(function (error) {
-          console.error("Failed to send email:", error);
-        });
-    }
-  
-    // Select the form element
-    const billingForm = document.querySelector('.billing-info form');
-  
-    // Add an event listener for form changes
-    billingForm.addEventListener('input', () => {
-      // Get all input fields in the form
+    // Function to send checkout data to the backend (if required)
+    function submitCheckout() {
+      const billingForm = document.querySelector('#billing-form');
       const formData = new FormData(billingForm);
-  
-      // Create an object to store data
       let billingData = {};
   
-      // Iterate through form fields and store key-value pairs
       formData.forEach((value, key) => {
         billingData[key] = value;
       });
   
-      // Save the object as a JSON string in localStorage
-      localStorage.setItem('billingInfo', JSON.stringify(billingData));
+      const checkoutData = {
+        ...billingData,
+        products: productData,
+        totalPrice: totalPrice,
+        paymentStatus: 'pending',
+      };
+  
+      fetch('https://newweb-production-2f78.up.railway.app/submit-checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(checkoutData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Checkout data submitted:', data);
+      })
+      .catch(error => {
+        console.error('Error submitting checkout:', error);
+      });
+    }
+  
+    // PayPal form will now submit directly, no need to prevent it
+    document.querySelector('.submit-btn').addEventListener('click', () => {
+      submitCheckout(); // You can still send data to the backend
     });
-  
-    // Retrieve data from localStorage and populate the form on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedData = localStorage.getItem('billingInfo');
-  
-      if (savedData) {
-        const billingData = JSON.parse(savedData);
-  
-        // Populate the form fields with saved data
-        Object.entries(billingData).forEach(([key, value]) => {
-          const inputField = billingForm.querySelector(`[name="${key}"]`);
-          if (inputField) {
-            inputField.value = value;
+    function checkPaymentStatus() {
+    const orderId = localStorage.getItem('orderId'); // Retrieve the order ID from localStorage
+
+    if (orderId) {
+      fetch(`https://newweb-production-2f78.up.railway.app/get-order-status/${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+          // Update the UI with the payment status
+          const paymentStatusElement = document.getElementById('payment-status');
+          if (data.paymentStatus === 'completed') {
+            paymentStatusElement.innerText = 'Payment Completed';
+          } else {
+            paymentStatusElement.innerText = 'Payment Pending';
           }
+        })
+        .catch(error => {
+          console.error('Error checking payment status:', error);
         });
-      }
-    });
+    }
+  }
+
+  // Periodically check payment status (e.g., every 5 seconds)
+  setInterval(checkPaymentStatus, 5000);
   </script>
   
 </body>
+
 
 </html>

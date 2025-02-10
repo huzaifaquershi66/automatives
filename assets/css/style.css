@@ -13,7 +13,9 @@
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
 
   /**
@@ -2123,4 +2125,112 @@ button:hover {
   .about-tex {
     font-size: 11px; /* Smaller font size for very small screens */
   }
+}
+
+
+
+.color {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: white;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.description {
+  color: blanchedalmond;
+  line-height: 1.8;
+  font-size: 1.3rem;
+  max-width: 800px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.icon {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.icon img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icon img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .icon img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .icon img {
+    width: 25px;
+
+    height: 25px;
+  }
+}
+
+
+/* Sidebar Styling */
+#sidebar {
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#sidebar ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#sidebar ul li a:hover {
+  background-color: #4a5568; /* Slightly lighter gray for hover effect */
+  transform: translateX(5px);
+}
+
+#sidebar ul li a .icon {
+  margin-right: 10px;
+}
+
+#close-sidebar {
+  transition: color 0.3s ease;
+}
+
+#close-sidebar:hover {
+  color: #f56565; /* Red hover effect */
 }
