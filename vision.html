@@ -19,15 +19,44 @@
     };
   </script>
   <style>
-    .nav-gradient {
-      background: linear-gradient(to right, #f12711, #f5af19);
-    }
+   .nav-gradient {
+            background: linear-gradient(90deg, #1a1d20 0%, #212529 100%);
+        }
+        html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Glass Effect */
+.backdrop-blur-lg {
+    backdrop-filter: blur(20px);
+}
+
+/* Gradient Text Effect */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* Hover Effects */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
     </style>
 </head>
 
 
 
-<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
+<body class="bg-gray-200 text-white font-sans overflow-x-hidden">
   <div class="h-20 fixed top-0 left-0 right-0 z-50 w-full font-sans nav-gradient border-b border-gray-700/30 backdrop-blur-sm shadow-lg">
     <!-- Logo Section -->
     <div class="max-w-7xl mx-auto px-4 h-full">
@@ -107,28 +136,88 @@
     </div>
 </div>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-gray-900 via-black to-gray-800 py-28 px-6 md:px-20 relative">
-    <!-- Background Image -->
-    <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FyfGVufDB8fDB8fHww" 
-           alt="Car Background" class="w-full h-full object-cover opacity-50">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+    <!-- Background Image with Better Overlay -->
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" 
+             alt="Luxury Car Background" 
+             class="w-full h-full object-cover">
+        
+        <!-- Enhanced Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
     </div>
 
-    <!-- Semi-transparent overlay -->
-    <div class="absolute inset-0 bg-black opacity-40 z-10"></div>
+    <!-- Main Content -->
+    <div class="relative z-20 w-full">
+        <div class="container mx-auto px-4">
+            <!-- Header Section -->
+            <div class="text-center max-w-5xl mx-auto mb-16">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 leading-tight">
+                    Professional Vehicle History Checks
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                    Making car buying smarter, safer, and more transparent through comprehensive vehicle history reports.
+                </p>
+            </div>
 
-    <div class="max-w-5xl mx-auto text-center relative z-20">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white tracking-wide">Our Vision</h1>
-      <p class="text-xl text-gray-100 mb-8 leading-relaxed">
-        At Automotive History Checks, our vision is simple: to make car buying smarter, safer, and more transparent. 
-        We provide reliable, easy-to-understand vehicle history reports that give you the knowledge you need to make informed decisions.
-      </p>
-      <a href="pricing.html" 
-         class="text-lg bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-full inline-block transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
-         Get Your Report Now
-      </a>
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
+                <!-- Feature 1 -->
+                <div class="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-blue-500/10 transform hover:scale-105 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="ri-shield-check-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Trusted Reports</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Access comprehensive vehicle data from reliable industry sources.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-blue-500/10 transform hover:scale-105 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="ri-time-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Instant Access</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Get detailed vehicle history reports within seconds.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-blue-500/10 transform hover:scale-105 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="ri-secure-payment-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Secure Process</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Your data security is our top priority with encrypted handling.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                    Ready to Make an Informed Decision?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                    Get instant access to comprehensive vehicle history reports and make confident decisions about your next vehicle purchase.
+                </p>
+                <a href="pricing.html" 
+                   class="inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white text-xl font-bold px-12 py-5 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <span>Get Your Report</span>
+                    <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+        </div>
     </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-500 rounded-full filter blur-[120px] opacity-20"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-700 rounded-full filter blur-[120px] opacity-20"></div>
 </section>
+
 
 
   <!-- Vision and Why Choose Us Section -->
@@ -350,8 +439,8 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision"];
+     document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision","refund"];
       const navLinksContainer = document.getElementById('nav-links');
       const sidebarLinksContainer = document.querySelector('#sidebar ul');
 
@@ -405,7 +494,10 @@
         document.getElementById('mobile-nav-links').innerHTML = `
             <a href="/" class="block text-gray-400 hover:text-white transition-colors duration-300">Home</a>
             <a href="/about.html" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
-            <a href="/services.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Services</a>
+            <a href="/pricing.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Pricing</a>
+                        <a href="/vision.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Our Vision</a>
+                        <a href="/refund.html" class="block text-gray-400 hover:text-white transition-colors duration-300">claim & refund</a>
+
             <a href="/contact.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
         `;
 

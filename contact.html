@@ -148,9 +148,35 @@
         .nav-gradient {
             background: linear-gradient(90deg, #1a1d20 0%, #212529 100%);
         }
+        .glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.input-effect:focus {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    outline: none;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.form-group:hover i {
+    transform: translateY(-50%) scale(1.1);
+    color: #3B82F6;
+}
     </style>
 </head>
-<body class="bg-slate-900 text-gray-100 overflow-x-hidden">
+<body class="bg-gray-700 text-gray-100 overflow-x-hidden">
     <!-- Your existing header/navigation code here -->
     <div class="h-20 fixed top-0 left-0 right-0 z-50 w-full font-sans nav-gradient border-b border-gray-700/30 backdrop-blur-sm shadow-lg">
       <!-- Logo Section -->
@@ -272,87 +298,111 @@
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-16">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Contact Form Section -->
-            <div class="glass-card rounded-2xl p-8" data-aos="fade-right">
-                <h2 class="text-2xl font-bold mb-8 flex items-center">
-                    <i class="ri-message-3-line text-blue-500 mr-3"></i>
-                    Send Us a Message
+            <!-- Enhanced Contact Form Section -->
+            <div class="glass-card rounded-2xl p-8 shadow-xl backdrop-blur-lg border border-blue-500/10" data-aos="fade-right">
+                <h2 class="text-3xl font-bold mb-8 flex items-center text-gradient bg-gradient-to-r from-blue-400 to-blue-600">
+                    <i class="ri-message-3-line mr-3"></i>
+                    Get in Touch
                 </h2>
                 <form id="contactForm" class="space-y-6">
                     <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Full Name</label>
-                            <input type="text" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
-                                   placeholder="Enter your full name">
+                        <div class="form-group">
+                            <label class="block text-sm font-medium mb-2 text-blue-400">Full Name</label>
+                            <div class="relative">
+                                <i class="ri-user-line absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-500"></i>
+                                <input type="text" 
+                                       class="w-full input-effect rounded-lg pl-12 pr-4 py-3 text-gray-100 bg-blue-900/20 border border-blue-500/20 focus:border-blue-500 transition-all duration-300" 
+                                       placeholder="Enter your full name">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Email Address</label>
-                            <input type="email" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
-                                   placeholder="Enter your email">
+                        
+                        <div class="form-group">
+                            <label class="block text-sm font-medium mb-2 text-blue-400">Email Address</label>
+                            <div class="relative">
+                                <i class="ri-mail-line absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-500"></i>
+                                <input type="email" 
+                                       class="w-full input-effect rounded-lg pl-12 pr-4 py-3 text-gray-100 bg-blue-900/20 border border-blue-500/20 focus:border-blue-500 transition-all duration-300" 
+                                       placeholder="Enter your email">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Vehicle VIN (Optional)</label>
-                            <input type="text" class="w-full input-effect rounded-lg px-4 py-3 text-gray-100" 
-                                   placeholder="Enter vehicle VIN number">
+                        
+                        <div class="form-group">
+                            <label class="block text-sm font-medium mb-2 text-blue-400">Vehicle VIN (Optional)</label>
+                            <div class="relative">
+                                <i class="ri-car-line absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-500"></i>
+                                <input type="text" 
+                                       class="w-full input-effect rounded-lg pl-12 pr-4 py-3 text-gray-100 bg-blue-900/20 border border-blue-500/20 focus:border-blue-500 transition-all duration-300" 
+                                       placeholder="Enter vehicle VIN number">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Message</label>
-                            <textarea class="w-full input-effect rounded-lg px-4 py-3 text-gray-100 h-32" 
-                                      placeholder="How can we help you?"></textarea>
+                        
+                        <div class="form-group">
+                            <label class="block text-sm font-medium mb-2 text-blue-400">Message</label>
+                            <div class="relative">
+                                <i class="ri-chat-1-line absolute left-4 top-4 text-blue-500"></i>
+                                <textarea class="w-full input-effect rounded-lg pl-12 pr-4 py-3 text-gray-100 bg-blue-900/20 border border-blue-500/20 focus:border-blue-500 transition-all duration-300 h-32" 
+                                          placeholder="How can we help you?"></textarea>
+                            </div>
                         </div>
                     </div>
+                    
                     <button type="submit" 
                             class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 
-                                   text-white font-bold py-3 rounded-lg transition-all duration-300 transform hover:scale-[1.02]">
-                        Send Message
+                                   text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02]
+                                   flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="ri-send-plane-fill"></i>
+                        <span>Send Message</span>
                     </button>
                 </form>
             </div>
-
-            <!-- Contact Information Section -->
+    
+            <!-- Enhanced Contact Information Section -->
             <div class="space-y-8">
-                <!-- Quick Contact Card -->
-                <div class="glass-card rounded-2xl p-8" data-aos="fade-left">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center">
-                        <i class="ri-customer-service-line text-blue-500 mr-3"></i>
-                        Quick Contact
+                <div class="glass-card rounded-2xl p-8 shadow-xl backdrop-blur-lg border border-blue-500/10" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold mb-8 text-gradient bg-gradient-to-r from-blue-400 to-blue-600 flex items-center">
+                        <i class="ri-customer-service-line mr-3"></i>
+                        Contact Information
                     </h2>
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4 group">
-                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
-                                      group-hover:bg-blue-500/20 transition-all duration-300">
-                                <i class="ri-phone-line text-blue-500 text-xl"></i>
+                    
+                    <div class="space-y-8">
+                        <!-- Phone Contact -->
+                        <div class="flex items-center space-x-6 group hover:bg-blue-900/20 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                      shadow-lg group-hover:scale-110 transition-all duration-300">
+                                <i class="ri-phone-line text-white text-2xl"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Call Us</p>
-                                <a href="tel:+447704591503" class="text-lg font-medium hover:text-blue-500 transition-colors">
-                                    +447704591503
+                                <p class="text-blue-400 font-medium mb-1">Call Us Anytime</p>
+                                <a href="tel:+447704591503" class="text-xl font-bold hover:text-blue-500 transition-colors">
+                                    +44 770 459 1503
                                 </a>
                             </div>
                         </div>
-
-                        <div class="flex items-center space-x-4 group">
-                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
-                                      group-hover:bg-blue-500/20 transition-all duration-300">
-                                <i class="ri-mail-line text-blue-500 text-xl"></i>
+    
+                        <!-- Email Contact -->
+                        <div class="flex items-center space-x-6 group hover:bg-blue-900/20 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                      shadow-lg group-hover:scale-110 transition-all duration-300">
+                                <i class="ri-mail-line text-white text-2xl"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Email Us</p>
+                                <p class="text-blue-400 font-medium mb-1">Email Support</p>
                                 <a href="mailto:automotivehistorychecks@gmail.com" 
-                                   class="text-lg font-medium hover:text-blue-500 transition-colors">
+                                   class="text-xl font-bold hover:text-blue-500 transition-colors break-all">
                                     automotivehistorychecks@gmail.com
                                 </a>
                             </div>
                         </div>
-
-                        <div class="flex items-center space-x-4 group">
-                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center 
-                                      group-hover:bg-blue-500/20 transition-all duration-300">
-                                <i class="ri-map-pin-line text-blue-500 text-xl"></i>
+    
+                        <!-- Location -->
+                        <div class="flex items-center space-x-6 group hover:bg-blue-900/20 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                      shadow-lg group-hover:scale-110 transition-all duration-300">
+                                <i class="ri-map-pin-line text-white text-2xl"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Visit Us</p>
-                                <p class="text-lg font-medium">
+                                <p class="text-blue-400 font-medium mb-1">Office Location</p>
+                                <p class="text-xl font-bold">
                                     Riverside Building, County Hall,<br>
                                     London SE1 7PB, United Kingdom
                                 </p>
@@ -360,21 +410,30 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Map Section -->
-                <div class="glass-card rounded-2xl p-8" data-aos="fade-up">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center">
-                        <i class="ri-map-2-line text-blue-500 mr-3"></i>
-                        Find Us
+    
+                <!-- Social Media Links -->
+                <div class="glass-card rounded-2xl p-8 shadow-xl backdrop-blur-lg border border-blue-500/10" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient bg-gradient-to-r from-blue-400 to-blue-600 flex items-center">
+                        <i class="ri-share-line mr-3"></i>
+                        Connect With Us
                     </h2>
-                    <div class="rounded-xl overflow-hidden">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.690883007619!2d-0.1205440484688974!3d51.50097397963454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2sCounty%20Hall!5e0!3m2!1sen!2suk!4v1644317121560!5m2!1sen!2suk"
-                            class="w-full h-[300px]" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                         hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="ri-facebook-fill text-white text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                         hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="ri-twitter-fill text-white text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                         hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="ri-linkedin-fill text-white text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center
+                                         hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="ri-instagram-fill text-white text-xl"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -585,7 +644,7 @@
             icon.classList.add('float-animation');
         });
         document.addEventListener('DOMContentLoaded', () => {
-      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision"];
+      const navLinks = ["Home", "About",  "Pricing", "Contact", "Our vision","refund"];
       const navLinksContainer = document.getElementById('nav-links');
       const sidebarLinksContainer = document.querySelector('#sidebar ul');
 
@@ -641,9 +700,12 @@
             <a href="/about.html" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
             <a href="/pricing.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Pricing</a>
                         <a href="/vision.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Our Vision</a>
+                        <a href="/refund.html" class="block text-gray-400 hover:text-white transition-colors duration-300">claim & refund</a>
 
             <a href="/contact.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
         `;
+
+
 
         // Toggle Mobile Menu
         document.getElementById('bars-icon').addEventListener('click', () => {
